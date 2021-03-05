@@ -1,0 +1,51 @@
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image td {
+  vertical-align: middle;
+}
+.table-image th {
+  vertical-align: middle;
+}
+.Laa h1 {
+  text-align: left;
+  color: #342e59;
+  font-size: 34px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+input.form-control {
+  background-color: #f2f4f5;
+  width: 100%;
+  height: calc(1.5em + 0.5rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+select.form-control.form-control-sm {
+  width: 100%;
+}
+.table thead tr th {
+  border-top: none;
+  text-align: center;
+}
+td {
+  text-align: center;
+}
+.button-focus:focus {
+  outline: none;
+}
+.button-focus {
+  border: none;
+  color: #2258bf;
+}
+
+/* .button-bg{
+  background-color: #2258BF;
+} */

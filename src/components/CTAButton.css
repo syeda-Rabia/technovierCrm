@@ -1,0 +1,7 @@
+button#CTA-button {
+  background-color: #2258bf;
+  color: white;
+}
+#CTA-button:after {
+  display: none;
+}

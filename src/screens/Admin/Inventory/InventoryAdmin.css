@@ -1,0 +1,26 @@
+.Laa h1 {
+  text-align: left;
+  color: #818181;
+  font-size: 34px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+input.form-control {
+  background-color: #f2f4f5;
+  width: 104px;
+  height: calc(1.5em + 0.5rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+select.form-control.form-control-sm {
+  width: auto;
+}
+.table thead tr th {
+  border-top: none;
+}
+#sn {
+  margin-left: 50px;
+  margin-right: 50px;
+}
