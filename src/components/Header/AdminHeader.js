@@ -11,25 +11,41 @@ import { signOut } from "../../modules/Auth/actions";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import { IconButton, Tooltip, Button } from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+
+
+// import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+// import Button from '@material-ui/core/Button';
+
+
 
 const useStyles = makeStyles((theme) => ({
   white: {
     color: "#818181",
     backgroundColor: "#fff",
-    width: theme.spacing(6),
+    width: theme.spacing(0),
     height: theme.spacing(6),
     border: 0,
   },
   logout: {
     "&, .MuiIconButton-root": {
       outline: "none !important",
+      color: "white",
     },
+  },
+  typography: {
+    padding: theme.spacing(2),
   },
 }));
 
@@ -38,6 +54,20 @@ const HeaderNavBar = (props) => {
 
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const openpopover = Boolean(anchorEl);
+  const id =  openpopover ? 'simple-popover' : undefined;
 
   // ;
   return (
@@ -59,9 +89,9 @@ const HeaderNavBar = (props) => {
         <Navbar.Brand>
           <Link to="/">
             <img
-              alt="PaK Group"
+              alt="Technovier"
               src={logo}
-              width="150px"
+              width="100px"
               height="50px"
               className="d-inline-block align-top"
             />{" "}
@@ -70,73 +100,19 @@ const HeaderNavBar = (props) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Link
-              id="R-navlink"
+        
+ <Link
+              id="mobileLogout"
               to={{
                 pathname: "/",
                 state: { from: "AdminHeader" },
               }}
             >
-              <Nav.Item>Dashboard</Nav.Item>
+              <Nav.Item
+              onClick={handleClick}>
+              NOTIFICATION</Nav.Item>
             </Link>
-            <Link
-              id="R-navlink"
-              to={{
-                pathname: "/admin/todolist",
-                state: { from: "AdminHeader" },
-              }}
-            >
-              <Nav.Item>To Do</Nav.Item>
-            </Link>
-            <Link
-              id="R-navlink"
-              to={{
-                pathname: "/admin/leads",
-                state: { from: "AdminHeader" },
-              }}
-            >
-              <Nav.Item>Leads</Nav.Item>
-            </Link>
-            <Link
-              id="R-navlink"
-              to={{
-                pathname: "/admin/leadsallocation",
-                state: { from: "AdminHeader" },
-              }}
-            >
-              <Nav.Item>Allocation</Nav.Item>
-            </Link>
-            <Link
-              id="R-navlink"
-              to={{
-                pathname: "/admin/inventory",
-                state: { from: "AdminHeader" },
-              }}
-            >
-              <Nav.Item>Inventory</Nav.Item>
-            </Link>
-            <Link
-              id="R-navlink"
-              to={{
-                pathname: "/admin/user",
-                state: { from: "AdminHeader" },
-              }}
-            >
-              <Nav.Item>User</Nav.Item>
-            </Link>
-            <Link
-              id="R-navlink"
-              to={{
-                pathname: "/admin/policies",
-                state: { from: "AdminHeader" },
-              }}
-            >
-              <Nav.Item>Policies</Nav.Item>
-            </Link>
-            <Link id="R-navlink">
-              <Nav.Item>HR</Nav.Item>
-            </Link>
-
+           
             {/* <Nav.Item href="#Accounts">Accounts</Nav.Item>
             <Nav.Item href="#Documentation">Documentation</Nav.Item> */}
             {/* <Nav.Item href="#Documentation" id="hr">
@@ -177,22 +153,80 @@ const HeaderNavBar = (props) => {
             <span style={{ color: "black" }}>HR</span>
           </Nav.Link> */}
           <Link
+            id="profile"
+            onClick={handleClick}
+          >
+            <Tooltip title="Notifications" placement="left">
+              {/* <Avatar className={classes.white}> */}
+                <IconButton className={classes.logout}>
+                  <NotificationsIcon />
+                </IconButton>
+              {/* </Avatar> */}
+            </Tooltip>
+          </Link>
+        </Nav>
+        <Nav id="profile">
+          {/* <Nav.Link
+            href="#profile"
+            style={{
+              backgroundColor: "white",
+              borderRadius: "50%",
+              width: "50px",
+              height: "50px",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              lineHeight: "20px",
+            }}
+          >
+            <span style={{ color: "black" }}>HR</span>
+          </Nav.Link> */}
+          <Link
             id="R-navlink"
             onClick={() => {
               setOpen(true);
               // props.LOGOUT();
             }}
           >
-            <Tooltip title="Logout" placement="left">
+              <Tooltip title="Logout" placement="left">
+              {/* <Avatar className={classes.white}> */}
+                <IconButton className={classes.logout}>
+                  <PowerSettingsNewIcon/>
+                </IconButton>
+              {/* </Avatar> */}
+            </Tooltip>
+            {/* <Tooltip title="Logout" placement="left">
               <Avatar className={classes.white}>
                 <IconButton className={classes.logout}>
                   <ExitToAppIcon />
                 </IconButton>
               </Avatar>
-            </Tooltip>
+            </Tooltip> */}
           </Link>
         </Nav>
+        
       </Navbar>
+       <Popover
+        id={id}
+        open={openpopover}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography className={classes.typography}><div>Notification 1</div>
+        <div>
+
+        Notification 2
+        </div>
+        </Typography>
+      </Popover>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
@@ -224,7 +258,10 @@ const HeaderNavBar = (props) => {
         </DialogActions>
       </Dialog>
     </>
-  );
+  
+  
+  
+    );
 };
 
 const mapDispatchToProps = (dispatch) => {

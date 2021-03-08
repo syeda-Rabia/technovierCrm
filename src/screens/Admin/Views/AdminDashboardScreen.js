@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import AdminDashboard from "../Dashboard/AdminDashboard";
 import LAASidebar from "../../../components/Sidebar/LAASidebar";
+import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import "./AdminDashboardScreen.css";
 export default function AdminProjectListScreen() {
@@ -9,7 +10,7 @@ export default function AdminProjectListScreen() {
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
         <Row>
-          {/* <Col
+          <Col
             id="sidebar-component"
             className="shadow"
             lg={2}
@@ -18,11 +19,11 @@ export default function AdminProjectListScreen() {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            {/* <LAASidebar /> */}
-          {/* </Col> */}
+             <AdminSidebar /> 
+          </Col>
           <Col
-            lg={12}
-            md={12}
+            lg={10}
+            md={10}
             sm={12}
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}

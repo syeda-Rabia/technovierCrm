@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "./EmployeHeader.css";
-import logo from "./../../assests/Pak-Group-logo-1.png";
+import logo from "./../../assests/pakgroup.png";
 
 import { connect } from "react-redux";
 import { signOut } from "../../modules/Auth/actions";

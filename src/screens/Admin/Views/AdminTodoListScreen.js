@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import FormPopover from "../../../components/Sidebar/FormPopover";
 import LeadsSidebar from "../../../components/Sidebar/LeadsSidebar";
 import ToDoListAdmin from "../TodoList/ToDoListAdmin";
+import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 export default function AdminTodoListScreen() {
   return (
     <React.Fragment>
@@ -21,7 +22,7 @@ export default function AdminTodoListScreen() {
               {/* <FormPopover name="Add new Lead" /> */}
             </Container>
 
-            {/* <LeadsSidebar /> */}
+            {/* <AdminSidebar /> */}
           </Col>
           <Col
             lg={10}

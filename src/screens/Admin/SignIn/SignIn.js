@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./SignIn.css";
 import Footer from "../../../components/SignIn/SignInFooter";
 import pakGroup from "./../../../assests/pakGroup.jpg";
-import pkgrp from "./../../../assests/pakGroup-logo.png";
-
+// import pkgrp from "./../../../assests/pakGroup-logo.png";
+import pkgrp from "./../../../assests/tech-logo-1.png";
 import { Container } from "react-bootstrap";
 import { POST } from "../../../utils/Functions";
 import { connect } from "react-redux";
@@ -145,7 +145,7 @@ const SignIn = (props) => {
           style={{ backgroundColor: "#F7FAFD", border: "1px black" }}
         >
           <div className="first-logo" style={{ height: "119px" }}>
-            <img style={{ width: "200px", height: "80px" }} src={pkgrp} />
+            <img style={{ width: "200px", height: "120px" ,marginTop:"25px",marginBottom:"25px"}} src={pkgrp} />
           </div>
 
           {/* <Container fluid style={{marginLeft:'30px',marginRight:'300px',border:'1px solid black'}}> */}

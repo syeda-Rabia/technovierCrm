@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import AdminHeader from "./components/Header/AdminHeader";
 import HeaderNavBar from "./components/Header/HeaderNavBar";
 import EmployeHeader from "./components/EmployeHeader/EmployeHeader";
 import { Container, Row, Col } from "react-bootstrap";
@@ -52,13 +53,13 @@ const NewApp = (props) => {
     return (
       <React.Fragment>
         <Route path="/admin/add-project">
-          <HeaderNavBar />
+          <AdminHeader />
           <AdminAddInventoryScreen />
         </Route>
         <Route path="/admin/newinventory" 
           render={(props) => (
             <>
-              <HeaderNavBar />
+              <AdminHeader />
             
               <AddNewInventory {...props} />
             </>
@@ -66,7 +67,7 @@ const NewApp = (props) => {
        
         </Route>
         <Route path="/admin/employee-request">
-          <HeaderNavBar />
+          <AdminHeader />
           <EmployeeRequestTable />
         </Route>
 
@@ -75,24 +76,24 @@ const NewApp = (props) => {
           path="/admin/projects"
           render={(props) => (
             <>
-              <HeaderNavBar />
+              <AdminHeader />
               <AdminProjectDetailsScreen {...props} />
             </>
           )}
         />
 
         <Route path="/admin/add-category">
-          <HeaderNavBar />
+          <AdminHeader />
           <AdminCategoriesDetailScreen />
         </Route>
         <Route path="/admin/add-interest">
-          <HeaderNavBar />
+          <AdminHeader />
           <AddInterest />
         </Route>
         <Route path="/admin/emp-action"  
         render={(props) => (
             <>
-              <HeaderNavBar />
+              <AdminHeader />
               <EmployeeAction {...props} />
             </>
           )}>
@@ -103,7 +104,7 @@ const NewApp = (props) => {
           path="/admin/inventory"
           render={(props) => (
             <>
-              <HeaderNavBar />
+              <AdminHeader />
                <AdminProjectListScreen {...props}/>
             </>
           )}
@@ -115,7 +116,7 @@ const NewApp = (props) => {
         {/* <Route path="/admin/dashboard"> */}
 
         <Route path="/" exact>
-          <HeaderNavBar />
+          <AdminHeader />
           <AdminDashboardScreen />
         </Route>
         <Route
@@ -123,7 +124,7 @@ const NewApp = (props) => {
           path="/admin/leadsallocation"
           render={(props) => (
             <>
-              <HeaderNavBar />
+              <AdminHeader />
               <AdminLAAScreen {...props} />
             </>
           )}
@@ -137,7 +138,7 @@ const NewApp = (props) => {
           path="/admin/leads"
           render={(props) => (
             <>
-              <HeaderNavBar />
+              <AdminHeader />
               <AdminLeadsScreen {...props} />
             </>
           )}
@@ -147,27 +148,27 @@ const NewApp = (props) => {
           <AdminLeadsScreen />
         </Route> */}
         <Route path="/admin/todolist">
-          <HeaderNavBar />
+          <AdminHeader />
           <AdminTodoListScreen />
         </Route>
         <Route path="/admin/user">
-          <HeaderNavBar />
+          <AdminHeader />
           <AddEmployee />
         </Route>
         <Route path="/admin/policies">
-          <HeaderNavBar />
+          <AdminHeader />
           <AdminPolicies />
         </Route>
         <Route exact path="/admin/viewable">
-          <HeaderNavBar />
+          <AdminHeader />
           <ViewableTo />
         </Route>
         <Route exact path="/admin/closedleads">
-          <HeaderNavBar />
+          <AdminHeader />
           <ClosedLeads />
         </Route>
         <Route path="/admin/upload-file">
-          <HeaderNavBar />
+          <AdminHeader />
           <br />
           {/* <ProjectList /> */}
           <ExcelPage />

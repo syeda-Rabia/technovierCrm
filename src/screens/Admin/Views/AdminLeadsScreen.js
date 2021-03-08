@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import LeadsAdmin from "../Leads/LeadsAdmin";
 import LeadsSidebar from "../../../components/Sidebar/LeadsSidebar";
+import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 export default function AdminLeadsScreen(props) {
   const [search, setSearch] = React.useState(false);
   const [url, setUrl] = React.useState(false);
@@ -24,7 +25,7 @@ export default function AdminLeadsScreen(props) {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            <LeadsSidebar update={handleSearch}/>
+            <AdminSidebar update={handleSearch}/>
           </Col>
           <Col
             lg={10}

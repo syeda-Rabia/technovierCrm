@@ -96,7 +96,7 @@ export default function RecordTable() {
     let res = await GET(ApiUrls.GET_ALL_DASHBOARD_USER_LEADS + filterData);
     // ;
     if (res.success !== false) {
-      console.log(res.data.leads,"LET's See what you got",res.data.leads.filter((item)=>item.lead!=null));
+      // console.log(res.data.leads,"LET's See what you got",res.data.leads.filter((item)=>item.lead!=null));
 
       setData(res.data.leads.filter((item)=>item.lead!=null));
     }

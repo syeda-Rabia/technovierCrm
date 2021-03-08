@@ -12,14 +12,14 @@ function AdminDashboard() {
     <Container fluid>
       {/* Ist Row */}
       <Container fluid>
-        <Row className="shadow mb-3 bg-white rounded mt-4 ">
+        <Row className="shadow mb-3 bg-white rounded mt-4 p-3 ">
           <Col lg={10} sm={10} xs={10} xl={11}>
             <h4 style={{ color: "#818181" }}>Admin Dashboard</h4>
           </Col>
           <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
-            {/* <div className="float-right drawer-div">
+            <div className="float-right drawer-div">
               <SwipeableTemporaryDrawer />
-            </div> */}
+            </div>
           </Col>
         </Row>
       </Container>

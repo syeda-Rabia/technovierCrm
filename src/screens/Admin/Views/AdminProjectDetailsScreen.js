@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import InventorySidebar from "../../../components/Sidebar/InventorySidebar";
 import InventoryAdmin from "../Inventory/InventoryAdmin";
+import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 export default function AdminProjectDetailsScreen(props) {
   return (
     <React.Fragment>
@@ -15,7 +16,7 @@ export default function AdminProjectDetailsScreen(props) {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            <InventorySidebar />
+            <AdminSidebar />
           </Col>
 
           <Col

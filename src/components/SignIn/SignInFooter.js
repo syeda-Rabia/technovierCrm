@@ -72,14 +72,14 @@ class Footer extends Component {
                 wordSpacing: "-2px",
               }}
             >
-              PakGroup © 2020 Copyright by
+              Technovier © 2020 Copyright by
               <a
                 style={{
                   color: "#2258BF",
                 }}
-                href="#"
+                href="https://technovier.com/"
               >
-                <strong> PakGroup.</strong>
+                <strong>Technovier</strong>
               </a>{" "}
               All Rights Reserved.
             </p>

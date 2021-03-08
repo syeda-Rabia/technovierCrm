@@ -27,7 +27,7 @@ export default function LAASidebar(props) {
     return (
       <React.Fragment>
         {/* <SearchLeads name="Search Leads" alignText="left" leftPadding="22px" /> */}
-        <FormPopover name="Search Leads" alignText="left" leftPadding="22px" update={props.update}/>
+        {/* <FormPopover name="Search Leads" alignText="left" leftPadding="22px" update={props.update}/> */}
         <ul className="list-group">
           <li id="list-item" className="list-group-item">
             <Link

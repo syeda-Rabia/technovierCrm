@@ -452,6 +452,17 @@ export default function ProjectList() {
               <FontAwesomeIcon icon={faPlusSquare} /> Add Project
             </button>
           </Link>
+          <Link to="/admin/add-category">
+            <button
+              type="button"
+              className="btn btn-primary my-4"
+              style={{
+                backgroundColor: "#2258BF",
+              }}
+            >
+              <FontAwesomeIcon icon={faPlusSquare} /> Add Category
+            </button>
+          </Link>
           <SuccessNotification
         showSuccess={showSuccessAlert}
         message={message}

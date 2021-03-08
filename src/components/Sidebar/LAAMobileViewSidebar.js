@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Drawer, SwipeableDrawer } from "@material-ui/core";
-
+import AdminSidebar from "./AdminASidebar";
 import FormPopover from "./FormPopover";
 import buttonImg from "./../../assests/resource.svg";
 import Fab from "@material-ui/core/Fab";
@@ -63,10 +63,10 @@ export default function TemporaryDrawer(props) {
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
           >
-            {/* <LAASidebar /> */}
-            <FormPopover name="Search Leads" update={props.update} />
-            <ul className="list-group">
-              <li id="list-item" className="list-group-item">
+            <AdminSidebar />
+            {/* <FormPopover name="Search Leads" update={props.update} /> */}
+            {/* <ul className="list-group"> */}
+              {/* <li id="list-item" className="list-group-item">
                 Add News Leads
               </li>
               <li id="list-item" className="list-group-item">
@@ -91,7 +91,7 @@ export default function TemporaryDrawer(props) {
                   Closed Leads
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </SwipeableDrawer>
         </React.Fragment>
       ))}

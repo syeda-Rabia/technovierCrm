@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import InventoryMobileViewSidebar from "../../../components/Sidebar/InventoryMobileViewSidebar";
 import LAASidebar from "../../../components/Sidebar/LAASidebar";
 import LeadsAllocatonAndAddition from "../LeadsAllocationAndAddition/LeadsAllocatonAndAddition";
+import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 export default function AdminLAAScreen(props) {
   const [search, setSearch] = React.useState(false);
   const [url, setUrl] = React.useState(false);
@@ -24,7 +25,7 @@ export default function AdminLAAScreen(props) {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            <LAASidebar update={handleSearch}/>
+            <AdminSidebar update={handleSearch}/>
             {/* <InventoryMobileViewSidebar /> */}
           </Col>
           <Col
