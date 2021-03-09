@@ -8,7 +8,7 @@ import {
   KeyboardTimePickerExample,
   KeyboardDatePickerExample,
 } from "../../../utils/KeyboardTimePickerExample";
-
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/EmployeeMobileviewSidebar";
 export default function LeadsAllocatonAndAddition() {
   const [data, setData] = React.useState(employeedata);
   const totalCount = data.length;
@@ -229,9 +229,16 @@ export default function LeadsAllocatonAndAddition() {
   };
   return (
     <Container fluid className="Laa">
-      <div className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-4">
-        <h3 style={{ color: "#818181" }}>To Do List (Employee)</h3>
-      </div>
+     <Row className="shadow p-3 mb-3 bg-white rounded mt-4 ">
+            <Col lg={10} sm={10} xs={10} xl={11}>
+              <h4 style={{ color: "#818181" }}>To Do List(Employee) </h4>
+            </Col>
+            <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+              <div className="float-right drawer-div">
+                <SwipeableTemporaryDrawer />
+              </div>
+            </Col>
+          </Row>
 
       <Row>
         <Col lg="12" style={{ backgroundColor: "white", borderRadius: "5px" }}>

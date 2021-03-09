@@ -43,7 +43,7 @@ import PreLoading from "../../../components/PreLoading";
 import LeadsMobileViewSidebar from "../../../components/Sidebar/LeadsMobileViewSidebar";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
-
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/EmployeeMobileviewSidebar";
 const useStyles = makeStyles((theme) => ({
   chipGracePeriod: {
     color: "#fff",
@@ -946,7 +946,7 @@ function EmployeeLeads(props, lead_id) {
 
         <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
           <div className="float-right ">
-            <LeadsMobileViewSidebar />
+            <SwipeableTemporaryDrawer />
           </div>
         </Col>
       </Row>

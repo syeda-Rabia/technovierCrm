@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 
 import InventoryMobileViewSidebar from "../../../components/Sidebar/InventoryMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import ReactTooltip from "react-tooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -413,7 +414,7 @@ export default function InventoryAdmin(props) {
             </h3> */}
             <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
           {/* <div className="float-right ">
-            <InventoryMobileViewSidebar />
+            <SwipeableTemporaryDrawer/>
           </div> */}
         </Col>
           </Row>

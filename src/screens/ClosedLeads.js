@@ -1,5 +1,6 @@
 // import React from 'react';
 import "../screens/Admin/Leads/LeadsAdmin";
+import SwipeableTemporaryDrawer from "../components/Sidebar/LAAMobileViewSidebar";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import Dropfile from "../utils/Dropfile";
 import { Link, Route } from "react-router-dom";
@@ -554,7 +555,7 @@ export default function LeadsAdmin() {
 
         <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
           <div className="float-right ">
-            <LeadsMobileViewSidebar />
+            <SwipeableTemporaryDrawer/>
           </div>
         </Col>
       </Row>

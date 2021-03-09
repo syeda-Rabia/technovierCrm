@@ -52,6 +52,7 @@ import CTAButton from "../../../components/CTAButton";
 import ReactTicker from "../../../components/Ticker/ReactTicker";
 import Ticker from "react-ticker";
 import LeadsMobileViewSidebar from "../../../components/Sidebar/LeadsMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 import { Alert } from "@material-ui/lab";
@@ -1499,7 +1500,7 @@ const setFilterdata = async () => {
         ):null} */}
         <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
           <div className="float-right ">
-            <LeadsMobileViewSidebar  update={props.update} />
+            <SwipeableTemporaryDrawer  update={props.update} />
           </div>
         </Col>
       </Row>

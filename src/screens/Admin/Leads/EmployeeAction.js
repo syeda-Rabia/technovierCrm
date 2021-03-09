@@ -19,7 +19,7 @@ import {
 } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import {useHistory } from "react-router-dom";
-
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",

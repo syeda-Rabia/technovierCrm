@@ -13,6 +13,8 @@ import PreLoading from "../../../components/PreLoading";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
+
 import {useHistory } from "react-router-dom";
 export default function ViewableTo() {
   const [select, setSelect] = React.useState([]);
@@ -149,9 +151,9 @@ export default function ViewableTo() {
   };
   return (
     <Container fluid>
-      <div className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-4">
+      <div className=" shadow p-3 mb-3 bg-white rounded mt-4">
         <Row>
-
+        <Col lg={10} sm={10} xs={10} xl={11}>
       <IconButton
           onClick={() => {
             history.push("/admin/inventory");
@@ -164,6 +166,12 @@ export default function ViewableTo() {
           </Tooltip>
         </IconButton>
         <h3 style={{ color: "#818181" }}>ViewAble To </h3>
+        </Col>
+        <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+          <div className="float-right ">
+            <SwipeableTemporaryDrawer />
+          </div>
+        </Col>
         </Row>
       </div>
 

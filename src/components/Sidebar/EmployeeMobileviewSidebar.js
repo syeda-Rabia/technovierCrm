@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Drawer, SwipeableDrawer } from "@material-ui/core";
-import AdminSidebar from "./AdminASidebar";
+import EmployeeSidebar from "./EmployeeSidebar";
 import FormPopover from "./FormPopover";
 import buttonImg from "./../../assests/resource.svg";
 import Fab from "@material-ui/core/Fab";
@@ -63,7 +63,7 @@ export default function TemporaryDrawer(props) {
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
           >
-            <AdminSidebar/>
+            <EmployeeSidebar/>
             {/* <FormPopover name="Search Leads" update={props.update} /> */}
             {/* <ul className="list-group"> */}
               {/* <li id="list-item" className="list-group-item">

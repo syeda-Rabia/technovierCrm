@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import InventorySidebar from "../../../components/Sidebar/InventorySidebar";
+import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 import AddNewInventory from "../Inventory/AddNewInventory";
 export default function AdminAddInventoryScreen(props) {
   return (
@@ -15,7 +15,7 @@ export default function AdminAddInventoryScreen(props) {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            <InventorySidebar />
+            <AdminSidebar />
           </Col>
           <Col
             lg={10}
@@ -24,7 +24,7 @@ export default function AdminAddInventoryScreen(props) {
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}
           >
-            <AddNewInventory listData={props.location.query}/>
+            <AddNewInventory {...props}/>
           </Col>
         </Row>
       </Container>

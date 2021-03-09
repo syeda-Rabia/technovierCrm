@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import EmployeeLAASidebar from "../../../components/Sidebar/EmployeeLAASidebar";
-import LAASidebar from "../../../components/Sidebar/LAASidebar";
+import EmployeeSidebar from "../../../components/Sidebar/EmployeeSidebar";
 import EmployeeDashboard from "../EmployeeDashboard/EmployeeDashboard";
 export default function EmployeeDashboardScreen() {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
         <Row>
-          {/* <Col
+          <Col
             id="sidebar-component"
             className="shadow"
             lg={2}
@@ -17,11 +17,11 @@ export default function EmployeeDashboardScreen() {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            {/* <EmployeeLAASidebar /> */}
-            {/* <LAASidebar />
-          </Col> */} 
+            
+             <EmployeeSidebar/>
+          </Col> 
           <Col
-            lg={12}
+            lg={10}
             md={12}
             sm={12}
             xs={12}

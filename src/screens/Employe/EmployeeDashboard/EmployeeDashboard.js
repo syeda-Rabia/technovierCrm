@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import QuarterlyLead_chart from "../../../components/Charts/QuarterlyLead_chart";
 import EmployeeLeadReportChart from "../../../components/EmployeeCharts/EmployeeLeadReportChart";
 import EmployeeQuartelyLeadChart from "../../../components/EmployeeCharts/EmployeeQuartelyLeadChart";
-import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/EmployeeMobileviewSidebar";
 
 class EmployeeDashboard extends Component {
   render() {
@@ -15,11 +15,11 @@ class EmployeeDashboard extends Component {
             <Col lg={10} sm={10} xs={10} xl={11}>
               <h4 style={{ color: "#818181" }}>Employee Dashboard</h4>
             </Col>
-            {/* <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+            <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
               <div className="float-right drawer-div">
                 <SwipeableTemporaryDrawer />
               </div>
-            </Col> */}
+            </Col>
           </Row>
         </Container>
         {/* 2nd Row */}

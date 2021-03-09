@@ -22,7 +22,7 @@ import { makeStyles, Backdrop, CircularProgress } from "@material-ui/core";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 import PreLoading from "../../../components/PreLoading";
-
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import TextEditor from "../../../components/editor/TextEditor";
 
 
@@ -484,6 +484,11 @@ export default function AddPolicies() {
         </IconButton> */}
         <Col lg={10} sm={10} xs={10} xl={11}>
           <h3 style={{ color: "#818181" }}>Policies</h3>
+        </Col>
+        <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+          <div className="float-right ">
+            <SwipeableTemporaryDrawer/>
+          </div>
         </Col>
       </Row>
 

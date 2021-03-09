@@ -19,8 +19,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Badge from '@material-ui/core/Badge';
 import TocIcon from '@material-ui/icons/Toc';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +57,7 @@ export default function NestedList() {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-         Admin Sidebar
+         Employee Sidebar
         </ListSubheader>
       }
       className={classes.root}
@@ -84,7 +84,7 @@ export default function NestedList() {
         <List style={{paddingLeft:"18px"}}component="div" >
           <ListItem button className={classes.nested}>
            
-            <ListItemLink href="/admin/leads">
+            <ListItemLink href="/employee/leads">
            <ListItemIcon>
               <ViewListIcon />
             </ListItemIcon>
@@ -99,28 +99,13 @@ export default function NestedList() {
             <ListItemText primary="Integrated leads" />
             </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
-          <ListItemLink href="/admin/closedleads">
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Closed Leads" />
-            </ListItemLink>
-          </ListItem>
+          
         </List>
       </Collapse>
-      <ListItem button>
-       
-          <ListItemLink href="/admin/leadsallocation">
-          <ListItemIcon>
-          <FilterListIcon />
-        </ListItemIcon>
-        <ListItemText primary="Leads Allocation"/>
-          </ListItemLink>
-      </ListItem>
+      
       <ListItem button>
 
-      <ListItemLink href="/admin/todolist">
+      <ListItemLink href="/employee/todolist">
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
@@ -134,7 +119,7 @@ export default function NestedList() {
           <ViewListIcon />
         </ListItemIcon>
         
-        <ListItemText primary="Inventory  " />
+        <ListItemText primary="Inventory" />
        
         </ListItemLink> {inventoryList ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
@@ -142,56 +127,31 @@ export default function NestedList() {
         <List style={{paddingLeft:"18px"}} component="div" >
         <ListItem button className={classes.nested}>
            
-             <ListItemLink href="/admin/inventory">
+             <ListItemLink href="/employee/inventory">
              <ListItemIcon>
               <ViewListIcon />
             </ListItemIcon>
             <ListItemText primary="Inventory List"/>
              </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
-           
-            <ListItemLink href="/admin/viewable">
- <ListItemIcon>
-              <VisibilityIcon />
-            </ListItemIcon>
-            <ListItemText primary="Viewable" />
-            </ListItemLink>
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            
-             <ListItemLink href="/admin/employee-request">
-             <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inventory Requests"/>
-             </ListItemLink>
-          </ListItem>
+         
+        
         </List>
       </Collapse> 
       <ListItem button>
        
-        <ListItemLink href="/admin/user">
-        <ListItemIcon>
-          <GroupIcon />
-        </ListItemIcon>
-        <ListItemText primary="Users"/>
-        </ListItemLink>
-      </ListItem>
-      <ListItem button>
-       
        <ListItemLink href="#">
        <ListItemIcon>
-       <Badge badgeContent={2} color="error">
          <NotificationsIcon />
-         </Badge>
        </ListItemIcon>
+       <Badge badgeContent={2} color="error">
        <ListItemText primary="Notification"/>
+       </Badge>
        </ListItemLink>
      </ListItem>
       <ListItem button>
         
-        <ListItemLink href="/admin/policies">
+        <ListItemLink href="/employee/policies">
         <ListItemIcon>
           <DescriptionIcon />
         </ListItemIcon>

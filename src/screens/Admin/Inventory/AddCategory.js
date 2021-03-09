@@ -19,6 +19,7 @@ import { GET, POST } from "./../../../utils/Functions";
 import ApiUrls from "./../../../utils/ApiUrls";
 import Pagination from "../../../components/Pagination/Pagination";
 import InventoryMobileViewSidebar from "../../../components/Sidebar/InventoryMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import PreLoading from "../../../components/PreLoading";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
@@ -371,6 +372,10 @@ export default function AddCategories() {
       />
 
       <Row className="shadow p-3 mb-3 bg-white rounded mt-4 ">
+        
+     
+       
+      <Col lg={10} sm={10} xs={10} xl={11}>
       <IconButton
           onClick={() => {
             history.push("/admin/inventory");
@@ -382,9 +387,6 @@ export default function AddCategories() {
             <ArrowBackIcon />
           </Tooltip>
         </IconButton>
-       
-      <Col lg={10} sm={10} xs={10} xl={11}>
-      
           <h2
             style={{
               color: "#818181",
@@ -398,9 +400,9 @@ export default function AddCategories() {
               Inventory Details 
             </h3> */}
             <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
-          {/* <div className="float-right mt-4">
-            <InventoryMobileViewSidebar />
-          </div> */}
+          <div className="float-right mt-4">
+            <SwipeableTemporaryDrawer/>
+          </div>
         </Col>
       </Row>
       <Row>

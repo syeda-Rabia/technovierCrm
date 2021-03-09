@@ -22,6 +22,7 @@ import { GET, POST } from "../../../utils/Functions";
 import ApiUrls from "../../../utils/ApiUrls";
 import { makeStyles, Backdrop, CircularProgress } from "@material-ui/core";
 import InventoryMobileViewSidebar from "../../../components/Sidebar/InventoryMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 
@@ -428,7 +429,7 @@ export default function ProjectList() {
         </Col>
         <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
           <div className="float-right ">
-            <InventoryMobileViewSidebar />
+            <SwipeableTemporaryDrawer/>
           </div>
         </Col>
       </Row>

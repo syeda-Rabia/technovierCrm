@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./SignIn.css";
 import Footer from "../../../components/SignIn/SignInFooter";
-import pakGroup from "./../../../assests/pakGroup.jpg";
+// import pakGroup from "./../../../assests/pakGroup.jpg";
+import pakGroup from "./../../../assests/realestate.jpg";
 // import pkgrp from "./../../../assests/pakGroup-logo.png";
 import pkgrp from "./../../../assests/tech-logo-1.png";
 import { Container } from "react-bootstrap";
@@ -145,7 +146,7 @@ const SignIn = (props) => {
           style={{ backgroundColor: "#F7FAFD", border: "1px black" }}
         >
           <div className="first-logo" style={{ height: "119px" }}>
-            <img style={{ width: "200px", height: "120px" ,marginTop:"25px",marginBottom:"25px"}} src={pkgrp} />
+            <img style={{ width: "150px", height: "100px" ,marginTop:"40px",marginBottom:"40px"}} src={pkgrp} />
           </div>
 
           {/* <Container fluid style={{marginLeft:'30px',marginRight:'300px',border:'1px solid black'}}> */}

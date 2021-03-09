@@ -25,6 +25,7 @@ import {
 } from "@material-ui/core";
 import { Link, useHistory, Redirect, Route } from "react-router-dom";
 import InventoryMobileViewSidebar from "../../../components/Sidebar/InventoryMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import PreLoading from "../../../components/PreLoading";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
@@ -117,7 +118,9 @@ export default function AddInventory() {
 
         <Container fluid>
           <Row className="shadow p-3 mb-3 bg-white rounded mt-4 ">
-          <IconButton
+        
+            <Col lg={10} sm={10} xs={10} xl={11}>
+            <IconButton
           onClick={() => {
             history.push("/admin/inventory");
           }}
@@ -128,13 +131,12 @@ export default function AddInventory() {
             <ArrowBackIcon />
           </Tooltip>
         </IconButton>
-            <Col lg={10} sm={10} xs={10} xl={11}>
               <h3 style={{ color: "#818181" }}>Add Project</h3>
             </Col>
             <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
-              {/* <div className="float-right ">
-                <InventoryMobileViewSidebar />
-              </div> */}
+              <div className="float-right ">
+                <SwipeableTemporaryDrawer />
+              </div>
             </Col>
           </Row>
           <SuccessNotification

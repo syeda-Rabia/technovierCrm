@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import AdminDashboard from "../Dashboard/AdminDashboard";
-import LAASidebar from "../../../components/Sidebar/LAASidebar";
+import AddInterest from "../Leads/AddInterest";
+
 import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import "./AdminDashboardScreen.css";
-export default function AdminProjectListScreen() {
+export default function AdminAddInterestScreen() {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
@@ -30,7 +30,7 @@ export default function AdminProjectListScreen() {
           >
             {/* <SwipeableTemporaryDrawer /> */}
 
-            <AdminDashboard />
+            <AddInterest />
           </Col>
         </Row>
       </Container>

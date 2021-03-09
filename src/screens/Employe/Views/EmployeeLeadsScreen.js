@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import EmployeeLeads from "../Leads/EmployeeLeads";
+import EmployeeSidebar from "../../../components/Sidebar/EmployeeSidebar";
 import EmployeeLeadsSidebar from "../../../components/Sidebar/EmployeeLeadsSidebar";
 export default function EmployeeLeadsScreen(props) {
   return (
@@ -16,7 +17,7 @@ export default function EmployeeLeadsScreen(props) {
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            <EmployeeLeadsSidebar />
+            <EmployeeSidebar/>
           </Col>
           <Col
             lg={10}

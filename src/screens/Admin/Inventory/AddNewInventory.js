@@ -25,6 +25,7 @@ import {
 } from "@material-ui/core";
 import { Link, useHistory, Redirect, Route } from "react-router-dom";
 import InventoryMobileViewSidebar from "../../../components/Sidebar/InventoryMobileViewSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import PreLoading from "../../../components/PreLoading";
 
 export default function AddInventory(props) {
@@ -151,7 +152,7 @@ console.log("props",props);
             </Col>
             <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
               <div className="float-right ">
-                <InventoryMobileViewSidebar />
+                <SwipeableTemporaryDrawer/>
               </div>
             </Col>
           </Row>

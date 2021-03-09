@@ -38,7 +38,7 @@ import Pagination from "../../../components/Pagination/Pagination";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import axios from "axios";
-
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 export default function AddEmployee() {
   const [userRecord, setUserRecord] = useState("");
   const [isLoading, setIsLoading] = useState(false);

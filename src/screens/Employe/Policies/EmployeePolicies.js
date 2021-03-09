@@ -2,7 +2,7 @@ import "./../../Admin/Leads/LeadsAdmin.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt,faEye } from "@fortawesome/free-solid-svg-icons";
-
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/EmployeeMobileviewSidebar";
 import { Modal } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { AddCategory } from "./../../../assests/constants/addcategory";
@@ -187,6 +187,13 @@ export default function AddPolicies() {
         <Col lg={10} sm={10} xs={10} xl={11}>
           <h3 style={{ color: "#818181" }}>Policies</h3>
         </Col>
+
+      
+            <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+              <div className="float-right drawer-div">
+                <SwipeableTemporaryDrawer />
+              </div>
+            </Col>
         </Row>
      
       

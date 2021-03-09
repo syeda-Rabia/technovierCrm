@@ -15,6 +15,7 @@ import { server_url, token } from "../../../utils/Config";
 import { GET, POST } from "./../../../utils/Functions";
 import ApiUrls from "./../../../utils/ApiUrls";
 import Pagination from "../../../components/Pagination/Pagination";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import {
   Tooltip,
   IconButton,
@@ -362,6 +363,11 @@ export default function AddInterest() {
         </IconButton>
         <Col lg={10} sm={10} xs={10} xl={11}>
           <h3 style={{ color: "#818181" }}>Interest</h3>
+        </Col>
+        <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+          <div className="float-right mt-4">
+            <SwipeableTemporaryDrawer/>
+          </div>
         </Col>
         </Row>
      

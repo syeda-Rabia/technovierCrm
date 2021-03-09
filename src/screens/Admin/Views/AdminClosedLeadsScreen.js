@@ -1,26 +1,24 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import AdminDashboard from "../Dashboard/AdminDashboard";
-import LAASidebar from "../../../components/Sidebar/LAASidebar";
+import InventorySidebar from "../../../components/Sidebar/InventorySidebar";
+import ClosedLeads from "../../ClosedLeads";
 import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
-import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
-import "./AdminDashboardScreen.css";
-export default function AdminProjectListScreen() {
+export default function AdminProjectDetailsScreen(props) {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
-        <Row>
-          <Col
+      <Row>
+        <Col
             id="sidebar-component"
-            className="shadow"
             lg={2}
             md={0}
             sm={0}
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-             <AdminSidebar /> 
+            <AdminSidebar />
           </Col>
+
           <Col
             lg={10}
             md={12}
@@ -28,9 +26,7 @@ export default function AdminProjectListScreen() {
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}
           >
-            {/* <SwipeableTemporaryDrawer /> */}
-
-            <AdminDashboard />
+            <ClosedLeads listData={props.location.query} />
           </Col>
         </Row>
       </Container>
