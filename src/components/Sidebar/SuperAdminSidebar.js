@@ -16,6 +16,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import GroupIcon from '@material-ui/icons/Group';
 import DescriptionIcon from '@material-ui/icons/Description';
 import SettingsIcon from '@material-ui/icons/Settings';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance'; 
 import ViewListIcon from '@material-ui/icons/ViewList';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import FilterListIcon from '@material-ui/icons/FilterList';
@@ -58,7 +59,7 @@ export default function NestedList() {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-         Admin Sidebar
+        Super Admin Sidebar
         </ListSubheader>
       }
       className={classes.root}
@@ -72,136 +73,49 @@ export default function NestedList() {
         <ListItemText primary="DashBoard"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button onClick={handleClick}>
-      <ListItemLink href="#">
-        <ListItemIcon>
-          <ViewListIcon />
-        </ListItemIcon>
-        <ListItemText primary="Leads" />
+     
+       <ListItem button>
         
-        </ListItemLink>{open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List style={{paddingLeft:"18px"}}component="div" >
-          <ListItem button className={classes.nested}>
-           
-            <ListItemLink href="/admin/leads">
-           <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText primary="Leads Lists" />
-            </ListItemLink>
-          </ListItem>
-          <ListItem button className={classes.nested}>
-          <ListItemLink href="/admin/integrated-leads">
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Integrated leads" />
-            </ListItemLink>
-          </ListItem>
-          <ListItem button className={classes.nested}>
-          <ListItemLink href="/admin/closedleads">
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Closed Leads" />
-            </ListItemLink>
-          </ListItem>
-        </List>
-      </Collapse>
-      <ListItem button>
-       
-          <ListItemLink href="/admin/leadsallocation">
-          <ListItemIcon>
-          <FilterListIcon />
+        <ListItemLink href="/superadmin/client">
+        <ListItemIcon>
+        <GroupIcon/>
         </ListItemIcon>
-        <ListItemText primary="Leads Allocation"/>
-          </ListItemLink>
+        <ListItemText primary="Clients"/>
+        </ListItemLink>
       </ListItem>
       <ListItem button>
 
-      <ListItemLink href="/admin/todolist">
+      <ListItemLink href="/superadmin/package-management">
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
-        <ListItemText primary="To Do List"/>
-        </ListItemLink>
-      </ListItem>
-      <ListItem button onClick={handleClick2}>
-      
-      <ListItemLink href="#">
-        <ListItemIcon>
-          <ViewListIcon />
-        </ListItemIcon>
-        
-        <ListItemText primary="Inventory  " />
-       
-        </ListItemLink> {inventoryList ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={inventoryList} timeout="auto" unmountOnExit>
-        <List style={{paddingLeft:"18px"}} component="div" >
-        <ListItem button className={classes.nested}>
-           
-             <ListItemLink href="/admin/inventory">
-             <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inventory List"/>
-             </ListItemLink>
-          </ListItem>
-          <ListItem button className={classes.nested}>
-           
-            <ListItemLink href="/admin/viewable">
- <ListItemIcon>
-              <VisibilityIcon />
-            </ListItemIcon>
-            <ListItemText primary="Viewable" />
-            </ListItemLink>
-          </ListItem>
-          <ListItem button className={classes.nested}>
-            
-             <ListItemLink href="/admin/employee-request">
-             <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inventory Requests"/>
-             </ListItemLink>
-          </ListItem> 
-        </List>
-      </Collapse> 
-      <ListItem button>
-       
-        <ListItemLink href="/admin/user">
-        <ListItemIcon>
-          <GroupIcon />
-        </ListItemIcon>
-        <ListItemText primary="Users"/>
+        <ListItemText primary="Package Management"/>
         </ListItemLink>
       </ListItem>
       <ListItem button>
        
-       <ListItemLink href="/admin/notifications">
+       <ListItemLink href="/superadmin/fianance-management">
+       <ListItemIcon>
+         <AccountBalanceIcon />
+       </ListItemIcon>
+       <ListItemText primary="Fianance Management"/>
+       </ListItemLink>
+     </ListItem>
+      <ListItem button>
+       
+       <ListItemLink href="/superadmin/notification">
        <ListItemIcon>
        <Badge badgeContent={2} color="error">
          <NotificationsIcon />
          </Badge>
        </ListItemIcon>
-       <ListItemText primary="Notification"/>
+       <ListItemText primary="Notifications"/>
        </ListItemLink>
      </ListItem>
-      <ListItem button>
-        
-        <ListItemLink href="/admin/policies">
-        <ListItemIcon>
-          <DescriptionIcon />
-        </ListItemIcon>
-        <ListItemText primary="Policies"/>
-        </ListItemLink>
-      </ListItem>
+     
       <ListItem button>
      
-        <ListItemLink href="/admin/documentation">
+        <ListItemLink href="/superadmin/documentation">
         <ListItemIcon>
           <DescriptionIcon />
         </ListItemIcon>
@@ -210,7 +124,7 @@ export default function NestedList() {
       </ListItem>
       <ListItem button>
        
-        <ListItemLink href="/admin/settings">
+        <ListItemLink href="/superadmin/setting">
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>

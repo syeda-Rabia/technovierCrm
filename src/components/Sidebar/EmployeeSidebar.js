@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
+    height: "100vh",
     backgroundColor: theme.palette.background.paper,
   },
   nested: {
@@ -92,7 +93,7 @@ export default function NestedList() {
             </ListItemLink>
           </ListItem>
           <ListItem button className={classes.nested}>
-          <ListItemLink href="#">
+          <ListItemLink href="/employee/Integrate-leads">
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
@@ -140,13 +141,15 @@ export default function NestedList() {
       </Collapse> 
       <ListItem button>
        
-       <ListItemLink href="#">
+       <ListItemLink href="/employee/notification">
        <ListItemIcon>
-         <NotificationsIcon />
-       </ListItemIcon>
        <Badge badgeContent={2} color="error">
+         <NotificationsIcon />
+         </Badge>
+       </ListItemIcon>
+      
        <ListItemText primary="Notification"/>
-       </Badge>
+       
        </ListItemLink>
      </ListItem>
       <ListItem button>
@@ -160,7 +163,7 @@ export default function NestedList() {
       </ListItem>
       <ListItem button>
      
-        <ListItemLink href="#">
+        <ListItemLink href="/employee/documentation">
         <ListItemIcon>
           <DescriptionIcon />
         </ListItemIcon>
@@ -169,7 +172,7 @@ export default function NestedList() {
       </ListItem>
       <ListItem button>
        
-        <ListItemLink href="#">
+        <ListItemLink href="/employee/setting">
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>

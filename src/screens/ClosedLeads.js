@@ -538,7 +538,7 @@ export default function LeadsAdmin() {
       <Row className="shadow p-3 mb-3 bg-white rounded mt-4 ">
       <IconButton
           onClick={() => {
-            history.push("/admin/leadsallocation");
+            history.push("/admin/leads");
           }}
           aria-label="delete"
           color="primary"

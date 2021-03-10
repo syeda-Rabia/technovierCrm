@@ -1,28 +1,25 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import FormPopover from "../../../components/Sidebar/FormPopover";
-import LeadsSidebar from "../../../components/Sidebar/LeadsSidebar";
-import ToDoListAdmin from "../TodoList/ToDoListAdmin";
+import IntegratedLeads from "../Leads/IntegratedLeads";
+
 import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
-export default function AdminTodoListScreen() {
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
+import "./AdminDashboardScreen.css";
+export default function AdminIntegratedLeadsScreen() {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
         <Row>
           <Col
             id="sidebar-component"
+            className="shadow"
             lg={2}
             md={0}
             sm={0}
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            {/* <Container fluid>
-              <FormPopover name="Search Leads" />
-              {/* <FormPopover name="Add new Lead" /> */}
-            {/* </Container>  */}
-
-            <AdminSidebar />
+             <AdminSidebar /> 
           </Col>
           <Col
             lg={10}
@@ -31,7 +28,9 @@ export default function AdminTodoListScreen() {
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}
           >
-            <ToDoListAdmin />
+            {/* <SwipeableTemporaryDrawer /> */}
+
+            <IntegratedLeads />
           </Col>
         </Row>
       </Container>

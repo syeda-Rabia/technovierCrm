@@ -5,7 +5,7 @@ import EmployeeAction from "../Leads/EmployeeAction";
 import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
 import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
 import "./AdminDashboardScreen.css";
-export default function AdminEmployeeActionScreen() {
+export default function AdminEmployeeActionScreen(props) {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
@@ -30,7 +30,7 @@ export default function AdminEmployeeActionScreen() {
           >
             {/* <SwipeableTemporaryDrawer /> */}
 
-            <EmployeeAction />
+            <EmployeeAction  {...props} />
           </Col>
         </Row>
       </Container>

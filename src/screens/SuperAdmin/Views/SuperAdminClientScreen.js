@@ -1,28 +1,23 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import FormPopover from "../../../components/Sidebar/FormPopover";
-import LeadsSidebar from "../../../components/Sidebar/LeadsSidebar";
-import ToDoListAdmin from "../TodoList/ToDoListAdmin";
-import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
-export default function AdminTodoListScreen() {
+import Clients from "../Clients/Clients";
+import SuperAdminSidebar from "../../../components/Sidebar/SuperAdminSidebar";
+import "./SuperAdminScreenStyle.css";
+export default function SuperAdminClientsScreen() {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
         <Row>
           <Col
             id="sidebar-component"
+            className="shadow"
             lg={2}
             md={0}
             sm={0}
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            {/* <Container fluid>
-              <FormPopover name="Search Leads" />
-              {/* <FormPopover name="Add new Lead" /> */}
-            {/* </Container>  */}
-
-            <AdminSidebar />
+             <SuperAdminSidebar/> 
           </Col>
           <Col
             lg={10}
@@ -31,7 +26,9 @@ export default function AdminTodoListScreen() {
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}
           >
-            <ToDoListAdmin />
+            {/* <SwipeableTemporaryDrawer /> */}
+
+            <Clients/>
           </Col>
         </Row>
       </Container>

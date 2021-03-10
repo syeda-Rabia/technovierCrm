@@ -1,28 +1,25 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import FormPopover from "../../../components/Sidebar/FormPopover";
-import LeadsSidebar from "../../../components/Sidebar/LeadsSidebar";
-import ToDoListAdmin from "../TodoList/ToDoListAdmin";
-import AdminSidebar from "../../../components/Sidebar/AdminASidebar";
-export default function AdminTodoListScreen() {
+import SuperAdminDasboard from "../DashBoard/SuperAdminDashBoard";
+import LAASidebar from "../../../components/Sidebar/LAASidebar";
+import SuperAdminSidebar from "../../../components/Sidebar/SuperAdminSidebar";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/LAAMobileViewSidebar";
+import "./SuperAdminScreenStyle.css";
+export default function AdminDashboardScreen() {
   return (
     <React.Fragment>
       <Container fluid style={{ height: "100vh" }}>
         <Row>
           <Col
             id="sidebar-component"
+            className="shadow"
             lg={2}
             md={0}
             sm={0}
             xs={0}
             style={{ backgroundColor: "white" }}
           >
-            {/* <Container fluid>
-              <FormPopover name="Search Leads" />
-              {/* <FormPopover name="Add new Lead" /> */}
-            {/* </Container>  */}
-
-            <AdminSidebar />
+             <SuperAdminSidebar/> 
           </Col>
           <Col
             lg={10}
@@ -31,7 +28,9 @@ export default function AdminTodoListScreen() {
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}
           >
-            <ToDoListAdmin />
+            {/* <SwipeableTemporaryDrawer /> */}
+
+            <SuperAdminDasboard/>
           </Col>
         </Row>
       </Container>

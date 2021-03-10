@@ -26,7 +26,7 @@ export default function AdminProjectDetailsScreen(props) {
             xs={12}
             style={{ backgroundColor: "#FAFAFA" }}
           >
-            <ClosedLeads listData={props.location.query} />
+            <ClosedLeads/>
           </Col>
         </Row>
       </Container>
