@@ -6,6 +6,7 @@ import { ModalData } from "./../../../assests/constants/LAAadmin";
 import "react-phone-number-input/style.css";
 import ReactTooltip from "react-tooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FormPopover from "../../../components/Sidebar/FormPopover";
 import {
  
   faRedo,
@@ -484,7 +485,13 @@ export default function LeadsAllocatonAndAddition(props) {
       ) : null}
       <Row>
         <div className="col-lg-12 shadow p-3  bg-white rounded ">
-        {showReset==true?(
+        <Row className=" pl-2 md-5 col-md-12" >
+          <div classname="searchbtn" style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
+<div style={{display:'flex'}}>
+
+         
+          <div>
+          {showReset==true?(
         <button
             type="button"
             className="btn btn-primary leadbtn ml-2" 
@@ -500,6 +507,14 @@ export default function LeadsAllocatonAndAddition(props) {
             <FontAwesomeIcon icon={faRedo} /> reverse filter
           </button>
            ):null} 
+          </div>
+          <div className="pt-0">
+          <FormPopover name="Search Leads" update={props.update}/>
+          </div>
+        </div>
+          </div>
+        </Row>
+         
           <div className="table-responsive">
             <table className="table table-hover" style={{ minHeight: "200px" }}>
               <thead>

@@ -53,13 +53,22 @@ a.dropdown-item {
 .navbar-nav .nav-item {
   padding-top: 15px;
 }
+.lg1{
+  margin-left:150px !important;
+}
 @media only screen and (max-width: 991px) {
   #profile {
     display: none;
+  }
+  .lg1{
+    margin-left:10px !important;
   }
 }
 @media only screen and (min-width: 991px) {
   #mobileLogout {
     display: none;
+  }
+  .lg1{
+    margin-left:10px !important;
   }
 }

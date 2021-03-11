@@ -2,10 +2,13 @@ import "./../../SuperAdmin/DashBoard/SuperAdminDashboard.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt,faEye } from "@fortawesome/free-solid-svg-icons";
-import SwipeableTemporaryDrawer from "../../../components/Sidebar/SuperAdminMobileViewSidebar";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { Modal } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { AddCategory } from "./../../../assests/constants/addcategory";
+import { ModalData } from "../../../assests/constants/modal";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/SuperAdminMobileViewSidebar";
 import "react-phone-number-input/style.css";
 import ReactTooltip from "react-tooltip";
 import { Alert, AlertTitle, Skeleton } from "@material-ui/lab";
@@ -15,15 +18,24 @@ import { GET, POST } from "./../../../utils/Functions";
 import ApiUrls from "./../../../utils/ApiUrls";
 import Pagination from "../../../components/Pagination/Pagination";
 import {
+ 
+  Slide,
+  Grow,
+  Snackbar,
+  Input,
   Tooltip,
   IconButton,
+  InputAdornment,
 } from "@material-ui/core";
 import {  useHistory, Redirect, Route } from "react-router-dom";
 import { makeStyles, Backdrop, CircularProgress } from "@material-ui/core";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 import PreLoading from "../../../components/PreLoading";
-import TextEditor from "../../../components/editor/TextEditor";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import TextArea from "antd/lib/input/TextArea";
+import { validateEmail } from "../../../utils/Validation";
 const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -33,14 +45,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function Clients() {
+export default function AddPolicies() {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
- 
+  const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
   const [showView, setShowView]= useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(ModalData);
   // const [data, setData] = useState([]);
   const [selectedID, setSelectedID] = useState(0);
   const [message, setMessage] = React.useState("");
@@ -48,13 +62,13 @@ export default function Clients() {
   const [showErrorAlert, setShowErrorAlert] = useState(false);
 
   const handleFetchData = async () => {
-    setIsLoading(true);
-    // let res = await GET(ApiUrls.GET_EMPLOYEE_POLICY_LIST);
+    // setIsLoading(true);
+    // let res = await GET(ApiUrls.GET_ALL_INTEREST);
     // console.log("ress0", res);
     // if (res.success != false) {
-    //   setData(res.data.policies);
+    //   setData(res.data.Interest);
     // }
-    setIsLoading(false);
+    // setIsLoading(false);
   };
   // React.useEffect(() => {
   //   handleFetchData();
@@ -63,16 +77,568 @@ export default function Clients() {
     handleFetchData();
   }, [refresh]);
   const history = useHistory();
+  const ModalAdd = ({ item }) => {
+    // const [interest, SetInterest] = useState("");
+    const [name, SetName] = useState("");
+    
+    const [email, SetEmail] = useState("");
+    const [package_type, SetPackage]=useState("");
+    const [password, SetPassword] = useState("");
+    const [phone_no, SetPhone_no] = useState("");
+    const [emailError, SetEmailError] = useState(false);
+    const [showPassword, SetShowPassword] = useState(false);
+    const [website, SetWebsite]=useState("");
+    const [status, SetStatus]=useState("");
 
-  
-  
+    const handleClickShowPassword = () => {
+      SetShowPassword(!showPassword);
+    };
+
+    const addData = async (event) => {
+      event.preventDefault();
+      let postData = {
+        id: "1",
+       name: name,
+       email:email,
+       password:password,
+       package_type:package_type,
+       website:website,
+       status:status,
+      
+      };
+
+      let arr = data;
+      arr.push(postData);
+      setData(arr);
+      setShowAdd(false);
+    };
+
+      //api
+      //*--------------------------------------
+      // let postData = {
+      //   interest: interest,
+      // };
+      // let res = await POST(ApiUrls.ADD_INTEREST, postData);
+      // console.log("post request", res);
+      // setRefresh(!refresh);
+
+      // setShowAdd(false);
+    // };
+    // };
+//*-------------------------------------------------------
+    return (
+      <Modal
+        show={showAdd}
+        onHide={() => {
+          setShowAdd(false);
+        }}
+      >
+        <Modal.Header
+          closeButton
+          className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-2"
+        >
+          <Modal.Title style={{ color: "#818181" }}>Add Client</Modal.Title>
+        </Modal.Header>
+        <form
+          onSubmit={(e) => {
+            // SendRecordToServer(e);
+          }}
+        >
+          <div className="col-lg-12 shadow bg-white rounded ">
+            <Modal.Body>
+            <div className="pb-3">
+                <h6>Name</h6>
+                <Input
+                  className="form-control  w-100 "
+                  placeholder="Enter First Name"
+                  required="true"
+                  type="text"
+                  minLength="3"
+                  maxLength="10"
+                  value={name}
+                  onChange={(e) => {
+                    SetName(e.target.value);
+                  }}
+                />
+              </div>
+             
+              <div className="pb-3">
+                <h6>Email</h6>
+                <Input
+                  className="form-control  w-100"
+                  // {true ?  error :null}
+                  error={emailError ? true : false}
+                  // style={{ borderColor: "red !important" }}
+                  placeholder="Enter Email"
+                  required="true"
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    if (validateEmail(e.target.value)) {
+                      // DO Somtin
+                      SetEmailError(false);
+                    } else {
+                      // do some
+                      SetEmailError(true);
+                    }
+                    SetEmail(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="pb-3">
+                <h6>Initial Password</h6>
+                <Input
+                  className="form-control  w-100 "
+                  placeholder="Enter password"
+                  required="true"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        style={{ outline: "none" }}
+                        onClick={handleClickShowPassword}
+                      >
+                        {showPassword ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  onChange={(e) => {
+                    SetPassword(e.target.value);
+                  }}
+                />
+                <small class="form-text text-muted">
+                  Your password must be 8 characters long
+                </small>
+              </div>
+
+              <div className="pb-3">
+                <h6>Package Type</h6>
+                <select
+                  value={package_type}
+                  onChange={(e) => {
+                    SetPackage(e.target.value);
+                  }}
+                  className="form-control form-control-sm w-100"
+                >
+                  <option value={"pk1"}>Package 1</option>
+                  <option value={"pk2"}>package 2</option>
+                </select>
+              </div>
+              <div className="pb-3">
+                <h6>Website</h6>
+                <Input
+                  className="form-control  w-100 "
+                  placeholder="Enter First Name"
+                  required="true"
+                  type="text"
+                  minLength="3"
+                  maxLength="10"
+                  value={website}
+                  onChange={(e) => {
+                    SetWebsite(e.target.value);
+                  }}
+                />
+                
+              </div>
+              <div className="pb-3">
+                <h6>Status</h6>
+                <select
+                  value={status}
+                  onChange={(e) => {
+                    SetStatus(e.target.value);
+                  }}
+                  className="form-control form-control-sm w-100"
+                >
+                  <option value={"pk1"}>Active</option>
+                  <option value={"pk2"}>De-active</option>
+                </select>
+              </div>
+            
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowAdd(false);
+                }}
+              >
+                Close
+              </Button>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                type="submit"
+                value="Submit"
+                onClick={addData}
+              >
+                Add
+              </Button>
+            </Modal.Footer>
+          </div>
+        </form>
+      </Modal>
+    );
+  };
+  const ModalEdit = ({ item }) => {
+    //  ;
+    // const [interest, SetInterest] = useState(item.interest);
+    const [name, SetName] = useState(item.name);
+    
+    const [email, SetEmail] = useState(item.email);
+    const [package_type, SetPackage]=useState(item.package_type);
+    const [password, SetPassword] = useState(item.password);
+    const [emailError, SetEmailError] = useState(false);
+    const [showPassword, SetShowPassword] = useState(false);
+    const [website, SetWebsite]=useState(item.website);
+    const [status, SetStatus]=useState(item.status);
+
+    const handleClickShowPassword = () => {
+      SetShowPassword(!showPassword);
+    };
+
+    const EditRecordToServer = async (event) => {
+      event.preventDefault();
+      let postData = {
+        id: item.id,
+       name: name,
+       email:email,
+       password:password,
+       package_type:package_type,
+       website:website,
+       status:status,
+      
+      };
+
+     
+    
+
+      // let res = await POST(ApiUrls.EDIT_INTEREST, user);
+      // if (res.error === false) {
+      //   setMessage("Interest Edited Successfully");
+      //   setShowSuccessAlert(true);
+      // } else {
+      //   setMessage("Interest Not Edited");
+      //   setShowErrorAlert(true);
+      // }
+      // console.log(res);
+      let arr = data.map((val) => {
+        if (val.id == postData.id) val =postData;
+        return val;
+      });
+      arr.push(postData);
+      setData(arr);
+      // setShowAdd(false);
+      setRefresh(!refresh);
+
+      setShowEdit(false);
+    };
+
+    return (
+      <Modal
+        show={showEdit}
+        onHide={() => {
+          setShowEdit(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title style={{ color: "#818181" }}>Edit Package</Modal.Title>
+        </Modal.Header>
+        <form
+          onSubmit={(e) => {
+            EditRecordToServer(e);
+          }}
+        >
+          <div>
+          <Modal.Body>
+            <div className="pb-3">
+                <h6>Name</h6>
+                <Input
+                  className="form-control  w-100 "
+                  placeholder="Enter First Name"
+                  required="true"
+                  type="text"
+                  minLength="3"
+                  maxLength="10"
+                  value={name}
+                  onChange={(e) => {
+                    SetName(e.target.value);
+                  }}
+                />
+              </div>
+             
+              <div className="pb-3">
+                <h6>Email</h6>
+                <Input
+                  className="form-control  w-100"
+                  // {true ?  error :null}
+                  error={emailError ? true : false}
+                  // style={{ borderColor: "red !important" }}
+                  placeholder="Enter Email"
+                  required="true"
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    if (validateEmail(e.target.value)) {
+                      // DO Somtin
+                      SetEmailError(false);
+                    } else {
+                      // do some
+                      SetEmailError(true);
+                    }
+                    SetEmail(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="pb-3">
+                <h6>Initial Password</h6>
+                <Input
+                  className="form-control  w-100 "
+                  placeholder="Enter password"
+                  required="true"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        style={{ outline: "none" }}
+                        onClick={handleClickShowPassword}
+                      >
+                        {showPassword ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  onChange={(e) => {
+                    SetPassword(e.target.value);
+                  }}
+                />
+                <small class="form-text text-muted">
+                  Your password must be 8 characters long
+                </small>
+              </div>
+
+              <div className="pb-3">
+                <h6>Package Type</h6>
+                <select
+                  value={package_type}
+                  onChange={(e) => {
+                    SetPackage(e.target.value);
+                  }}
+                  className="form-control form-control-sm w-100"
+                >
+                  <option value={"pk1"}>Package 1</option>
+                  <option value={"pk2"}>package 2</option>
+                </select>
+              </div>
+              <div className="pb-3">
+                <h6>Website</h6>
+                <Input
+                  className="form-control  w-100 "
+                  placeholder="Enter First Name"
+                  required="true"
+                  type="text"
+                  minLength="3"
+                  maxLength="10"
+                  value={website}
+                  onChange={(e) => {
+                    SetWebsite(e.target.value);
+                  }}
+                />
+                
+              </div>
+              <div className="pb-3">
+                <h6>Status</h6>
+                <select
+                  value={status}
+                  onChange={(e) => {
+                    SetStatus(e.target.value);
+                  }}
+                  className="form-control form-control-sm w-100"
+                >
+                  <option value={"pk1"}>Active</option>
+                  <option value={"pk2"}>De-active</option>
+                </select>
+              </div>
+            
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowEdit(false);
+                }}
+              >
+                Close
+              </Button>
+              <Button
+                type="submit"
+                value="Submit"
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={(e) => {
+                  setShowAdd(false);
+                  // EditRecordToServer(e);
+                }}
+              >
+                Edit
+              </Button>
+            </Modal.Footer>
+          </div>
+        </form>
+      </Modal>
+    );
+  };
+  const ModalView = ({ item }) => {
+    return (
+      <Modal
+        show={showView}
+        onHide={() => {
+          setShowView(false);
+        }}
+      >
+        <Modal.Header
+          closeButton
+          className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-2"
+        >
+          <Modal.Title style={{ color: "#818181" }}>
+            Client Detail
+          </Modal.Title>
+        </Modal.Header>
+        <div className="col-lg-12 shadow   bg-white rounded ">
+          <form>
+            <Modal.Body>
+              <div style={{ alignContent: "center" }}>
+              <div className="pb-3">
+                  <h6>Client Id </h6>
+                  <input className="form-control  w-100" value={item.id} />
+                </div>
+                
+                <div className="pb-3">
+                  <h6>Client name </h6>
+                  <input className="form-control  w-100" value={item.name} />
+                </div>
+                
+                <div className="pb-3">
+                <h6>Email</h6>
+                  <input className="form-control  w-100" value={item.email} />
+                </div>
+                <div className="pb-3">
+                <h6>Package Type</h6>
+                  <input className="form-control  w-100" value={item.package_type} />
+                </div>
+                <div className="pb-3">
+                <h6>Website</h6>
+                  <input className="form-control  w-100" value={item.website} />
+                </div>
+                <div className="pb-3">
+                <h6>Status</h6>
+                  <input className="form-control  w-100" value={item.status} />
+                </div>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowView(false);
+                }}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </form>
+        </div>
+      </Modal>
+    );
+  };
+
+ 
+  const ModalDelete = ({ item }) => {
+    const DeleteRecordFromData = async (item) => {
+      console.log("item is ", item);
+
+      let { id } = item;
+      console.log("ID is ", id);
+
+      let arr = data;
+
+      arr = arr.filter((user) => user.id != id.toString());
+
+      console.log("arr length ", arr.length, arr, selectedID);
+      setSelectedID((state) => {
+        if (state == arr.length) return state - 1;
+        return state;
+      });
+      setData(arr);
+      setShowDelete(false);
+      // let res = await GET(ApiUrls.DELETE_INTEREST + item.id);
+      // setShowDelete(false);
+
+      // if (res.error === false) {
+      //   setMessage("Interest Deleted Successfully");
+      //   setShowSuccessAlert(true);
+      //   // setRefresh(!refresh);
+      //   setSelectedID(0);
+      // } else {
+      //   setMessage("Interest Not Deleted");
+      //   setShowErrorAlert(true);
+      // }
+      // console.log(res);
+      // setRefresh(!refresh);
+    };
+    return (
+      <Modal
+        show={showDelete}
+        onHide={() => {
+          setShowDelete(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title style={{ color: "#818181" }}>Delete Record</Modal.Title>
+        </Modal.Header>
+        <div>
+          <Modal.Body>Do you really want to delete this Record</Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setShowDelete(false);
+              }}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                DeleteRecordFromData(item);
+              }}
+            >
+              Delete
+            </Button>
+          </Modal.Footer>
+        </div>
+      </Modal>
+    );
+  };
   const Table = ({ item, index }) => {
     //  ;
     return (
       <tr>
         
-        <td >{index+1}</td>
-        <td >{item.title}</td>
+        <td key={item.id}>{item.id}</td>
+        <td key={item.id}>{item.name}</td>
+        <td key={item.id}>{item.email}</td>
+        <td key={item.id}>{item.package_type}</td>
+        <td key={item.id}>{item.website}</td>
+        <td key={item.id}>{item.status}</td>
         <td>
           <div
             className="d-flex d-inline "
@@ -86,7 +652,7 @@ export default function Clients() {
               type="button"
               className="bg-transparent  button-focus mr-2"
               onClick={() => {
-                // setShowView(true);
+                setShowView(true);
                 setSelectedID(index);
               }}
             >
@@ -95,8 +661,36 @@ export default function Clients() {
             <ReactTooltip id="ViewTip" place="top" effect="solid">
               View Details
             </ReactTooltip>
-           
-           
+            <button
+              data-tip
+              data-for="EditTip"
+              type="button "
+              className="bg-transparent  button-focus mr-2"
+              onClick={() => {
+                setShowEdit(true);
+                setSelectedID(index);
+              }}
+            >
+              <FontAwesomeIcon style={{ fontSize: 15 }} icon={faPencilAlt} />
+            </button>
+            <ReactTooltip id="EditTip" place="top" effect="solid">
+              Edit Details
+            </ReactTooltip>
+            <button
+              data-tip
+              data-for="DeleteTip"
+              type="button"
+              className="bg-transparent  button-focus mr-2"
+              onClick={() => {
+                setShowDelete(true);
+                setSelectedID(index);
+              }}
+            >
+              <FontAwesomeIcon style={{ fontSize: 15 }} icon={faTrash} />
+            </button>
+            <ReactTooltip id="DeleteTip" place="top" effect="solid">
+              Delete Record
+            </ReactTooltip>
           </div>
         </td>
       </tr>
@@ -132,9 +726,7 @@ export default function Clients() {
         <Col lg={10} sm={10} xs={10} xl={11}>
           <h3 style={{ color: "#818181" }}>Clients</h3>
         </Col>
-
-      
-            <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+        <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
               <div className="float-right drawer-div">
                 <SwipeableTemporaryDrawer />
               </div>
@@ -142,18 +734,47 @@ export default function Clients() {
         </Row>
      
       
-        {/* <Row className=" shadow p-3  bg-white rounded ml-2 mr-1"> */}
-         
-          {/* <div className="table-responsive">
+        <Row className=" shadow p-3  bg-white rounded ml-2 mr-1">
+          <button
+            data-tip
+            data-for="AddTip"
+            type="button"
+            className="btn btn-primary "
+            style={{
+              backgroundColor: "#2258BF",
+            }}
+            onClick={() => {
+              setShowAdd(true);
+            }}
+          >
+            <FontAwesomeIcon icon={faPlusSquare} />{""} Add Client
+          </button>
+          <ReactTooltip id="AddTip" place="top" effect="solid">
+            Add new Client
+          </ReactTooltip>
+
+          <div className="table-responsive">
             <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col" style={{ color: "#818181" }}>
                     ID
                   </th>
-
                   <th scope="col" style={{ color: "#818181" }}>
-                Title
+                Client_Name
+                  </th>
+                  <th scope="col" style={{ color: "#818181" }}>
+                    Email
+                  </th>
+                  <th scope="col" style={{ color: "#818181" }}>
+                    Package_Type
+                  </th>
+                  <th scope="col" style={{ color: "#818181" }}>
+                    Website
+                  </th>
+                  
+                  <th scope="col" style={{ color: "#818181" }}>
+                   Status
                   </th>
                   <th scope="col" style={{ color: "#818181" }}>
                     Actions
@@ -167,16 +788,22 @@ export default function Clients() {
                   .map((item, index) => {
                     return <Table item={item} index={index} />;
                   })} */}
-                  {/* {data.map((item, index) => {
+                  {data.map((item, index) => {
                   return <Table index={index} item={item} />;
                 })}
               </tbody>
-              
+              {data.length > 0 ? (
+                <>
+                  <ModalDelete item={data[selectedID]} />
+                  <ModalEdit item={data[selectedID]} />
+                  <ModalView  item={data[selectedID]} />
+                </>
+              ) : null}
             </table>
-           
+            <ModalAdd />
           </div>
-         */} 
-      {/* </Row> */}
+        
+      </Row>
     </Container>
   );
 }

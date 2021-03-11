@@ -1,9 +1,9 @@
 import { store } from "../../src/modules/Store";
 // export const token = store.getState().auth.token;
-let baseeURL = "https://ova.technovier.com";
+// let baseeURL = "https://ova.technovier.com";
 // let baseeURL = "http://192.168.10.24:8000"; //technovier3
 // let baseeURL = "http://192.168.100.191:8000"; //technovier2
-
+let baseeURL = "https://technovier.com/crm";
 
 export const server_url = baseeURL+"/api/";
 // export const server_url = "https://ova.technovier.com/api/";

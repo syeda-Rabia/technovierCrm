@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import Dropfile from "../../../utils/Dropfile";
 import { Link, Route } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FormPopover from "../../../components/Sidebar/FormPopover";
 import {
   faEye,
   faPencilAlt,
@@ -1504,7 +1505,7 @@ const setFilterdata = async () => {
           </div>
         </Col>
       </Row>
-
+     
       <PreLoading startLoading={isLoading} />
 
       <SuccessNotification
@@ -1519,7 +1520,10 @@ const setFilterdata = async () => {
       />
 
       <Row className="shadow p-3 mb-3 bg-white rounded mt-4">
-        <Row className=" pl-2 md-5">
+        <Row className=" pl-2 md-5 col-md-12" >
+          <div classname="searchbtn" style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
+<div style={{display:'flex'}}>
+
           <div className=" pl-2 ">
            
             <Dropfile setRefresh={setRefresh}/>
@@ -1537,6 +1541,8 @@ const setFilterdata = async () => {
               </button>
             </Link>
           </div>
+          <div>
+
           <button
             type="button"
             className="btn btn-primary leadbtn" 
@@ -1549,25 +1555,38 @@ const setFilterdata = async () => {
           >
             <FontAwesomeIcon icon={faPlusSquare} /> Add Lead
           </button>
+          </div>
+</div>
+        <div style={{display:'flex'}}>
+
+         
+          <div>
           {showReset==true?(
 
-          
-          <button
-            type="button"
-            className="btn btn-primary leadbtn ml-2" 
-            onClick={() => {
-             
-              getAllLeadsData();
-             
-              setshowReset(false);
-            }}
-            style={{
-              backgroundColor: "#2258BF",
-            }}
-          >
-            <FontAwesomeIcon icon={faRedo} /> reverse filter
-          </button>
-          ):null}
+         
+
+            <button
+              type="button"
+              className="btn btn-primary leadbtn ml-3" 
+              onClick={() => {
+               
+                getAllLeadsData();
+               
+                setshowReset(false);
+              }}
+              style={{
+                backgroundColor: "#2258BF",
+              }}
+            >
+              <FontAwesomeIcon icon={faRedo} /> reverse filter
+            </button>
+            ):null}
+          </div>
+          <div className="pt-0">
+          <FormPopover name="Search Leads" update={props.update}/>
+          </div>
+        </div>
+          </div>
         </Row>
         <div className="table-responsive">
           <table className="table table-hover" style={{ minHeight: "200px" }}>

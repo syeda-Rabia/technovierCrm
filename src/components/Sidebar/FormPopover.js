@@ -129,8 +129,9 @@ export default function FormPopover(props) {
         aria-describedby={id}
         variant="contained"
         // color="primary"
-        // className="mb-2"
-        style={{ backgroundColor: "#e5eeff" }}
+        className="mt-0 p-1 ml-2"
+      
+        style={{ backgroundColor: "#2258BF" ,color:"white",borderRadius:"2px", textTransform:'capitalize',paddingTop:"5px",fontSize:"16px"}}
         id="searchLeads"
         onClick={handleClick}
       >

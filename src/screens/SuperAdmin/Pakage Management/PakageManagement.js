@@ -2,10 +2,13 @@ import "./../../SuperAdmin/DashBoard/SuperAdminDashboard.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt,faEye } from "@fortawesome/free-solid-svg-icons";
-import SwipeableTemporaryDrawer from "../../../components/Sidebar/SuperAdminMobileViewSidebar";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { Modal } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { AddCategory } from "./../../../assests/constants/addcategory";
+import { packageManagement  } from "../../../assests/constants/packagemanagement";
+import SwipeableTemporaryDrawer from "../../../components/Sidebar/SuperAdminMobileViewSidebar";
 import "react-phone-number-input/style.css";
 import ReactTooltip from "react-tooltip";
 import { Alert, AlertTitle, Skeleton } from "@material-ui/lab";
@@ -23,7 +26,8 @@ import { makeStyles, Backdrop, CircularProgress } from "@material-ui/core";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 import PreLoading from "../../../components/PreLoading";
-import TextEditor from "../../../components/editor/TextEditor";
+
+import TextArea from "antd/lib/input/TextArea";
 const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -33,14 +37,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function PakageManagement() {
+export default function AddPolicies() {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
- 
+  const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
   const [showView, setShowView]= useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(packageManagement );
   // const [data, setData] = useState([]);
   const [selectedID, setSelectedID] = useState(0);
   const [message, setMessage] = React.useState("");
@@ -48,13 +54,13 @@ export default function PakageManagement() {
   const [showErrorAlert, setShowErrorAlert] = useState(false);
 
   const handleFetchData = async () => {
-    setIsLoading(true);
-    // let res = await GET(ApiUrls.GET_EMPLOYEE_POLICY_LIST);
+    // setIsLoading(true);
+    // let res = await GET(ApiUrls.GET_ALL_INTEREST);
     // console.log("ress0", res);
     // if (res.success != false) {
-    //   setData(res.data.policies);
+    //   setData(res.data.Interest);
     // }
-    setIsLoading(false);
+    // setIsLoading(false);
   };
   // React.useEffect(() => {
   //   handleFetchData();
@@ -63,16 +69,345 @@ export default function PakageManagement() {
     handleFetchData();
   }, [refresh]);
   const history = useHistory();
+  const ModalAdd = ({ item }) => {
+    // const [interest, SetInterest] = useState("");
+    const [package_name, SetPackageName]=useState("");
+    const [duration, SetDuration]=useState("");
 
-  
-  
+    const addData = async (event) => {
+      event.preventDefault();
+      let postData = {
+        id: "1",
+       name: package_name,
+        duration: duration, 
+      
+      };
+
+      let arr = data;
+      arr.push(postData);
+      setData(arr);
+      setShowAdd(false);
+    };
+
+      //api
+      //*--------------------------------------
+      // let postData = {
+      //   interest: interest,
+      // };
+      // let res = await POST(ApiUrls.ADD_INTEREST, postData);
+      // console.log("post request", res);
+      // setRefresh(!refresh);
+
+      // setShowAdd(false);
+    // };
+    // };
+//*-------------------------------------------------------
+    return (
+      <Modal
+        show={showAdd}
+        onHide={() => {
+          setShowAdd(false);
+        }}
+      >
+        <Modal.Header
+          closeButton
+          className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-2"
+        >
+          <Modal.Title style={{ color: "#818181" }}>Add Package</Modal.Title>
+        </Modal.Header>
+        <form
+          onSubmit={(e) => {
+            // SendRecordToServer(e);
+          }}
+        >
+          <div className="col-lg-12 shadow bg-white rounded ">
+            <Modal.Body>
+              <div className="pb-3">
+                <h6>Package Name</h6>
+                <input
+                  className="form-control  w-100 "
+                  placeholder="Enter package"
+                  type="text"
+                  minLength="3"
+                  maxLength="30"
+                  value={package_name}
+                  onChange={(e) => {
+                    SetPackageName(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+              <h6>Package Duration</h6>
+              <input
+                  className="form-control  w-100 "
+                  placeholder="Enter Duration"
+                  type="text"
+                  minLength="3"
+                  maxLength="30"
+                  value={duration}
+                  onChange={(e) => {
+                    SetDuration(e.target.value);
+                  }}
+                />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowAdd(false);
+                }}
+              >
+                Close
+              </Button>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                type="submit"
+                value="Submit"
+                onClick={addData}
+              >
+                Add
+              </Button>
+            </Modal.Footer>
+          </div>
+        </form>
+      </Modal>
+    );
+  };
+  const ModalEdit = ({ item }) => {
+    //  ;
+    // const [interest, SetInterest] = useState(item.interest);
+    const [package_name, SetPackageName]=useState(item.name);
+    const [duration, SetDuration]=useState(item.duration);
+    const EditRecordToServer = async (event) => {
+      event.preventDefault();
+
+      // add validations
+      // push
+
+      let packagedata = {
+        id: item.id,
+        name: package_name,
+        duration: duration
+      };
+      // let res = await POST(ApiUrls.EDIT_INTEREST, user);
+      // if (res.error === false) {
+      //   setMessage("Interest Edited Successfully");
+      //   setShowSuccessAlert(true);
+      // } else {
+      //   setMessage("Interest Not Edited");
+      //   setShowErrorAlert(true);
+      // }
+      // console.log(res);
+      let arr = data.map((val) => {
+        if (val.id == packagedata.id) val =packagedata;
+        return val;
+      });
+      arr.push(packagedata);
+      setData(arr);
+      // setShowAdd(false);
+      setRefresh(!refresh);
+
+      setShowEdit(false);
+    };
+
+    return (
+      <Modal
+        show={showEdit}
+        onHide={() => {
+          setShowEdit(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title style={{ color: "#818181" }}>Edit Package</Modal.Title>
+        </Modal.Header>
+        <form
+          onSubmit={(e) => {
+            EditRecordToServer(e);
+          }}
+        >
+          <div>
+            <Modal.Body>
+              {/*             
+            <h6>ID</h6>
+            <input className="form-control w-100"    placeholder="Enter id" /> */}
+              <form>
+                <div className="pb-3">
+                  <h6>Package Name </h6>
+                  <input
+                    className="form-control w-100 "
+                    placeholder="Enter Package name"
+                    type="text"
+                    value={package_name}
+                    onChange={(e) => {
+                      SetPackageName(e.target.value);
+                    }}
+                  />
+                </div>
+                <div>
+                    <h6>Package Duration</h6>
+                    <input
+                    className="form-control w-100 "
+                    placeholder="Enter Duration"
+                    type="text"
+                    value={duration}
+                    onChange={(e) => {
+                      SetDuration(e.target.value);
+                    }}
+                  />
+                </div>
+              </form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowEdit(false);
+                }}
+              >
+                Close
+              </Button>
+              <Button
+                type="submit"
+                value="Submit"
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={(e) => {
+                  setShowAdd(false);
+                  // EditRecordToServer(e);
+                }}
+              >
+                Edit
+              </Button>
+            </Modal.Footer>
+          </div>
+        </form>
+      </Modal>
+    );
+  };
+  const ModalView = ({ item }) => {
+    return (
+      <Modal
+        show={showView}
+        onHide={() => {
+          setShowView(false);
+        }}
+      >
+        <Modal.Header
+          closeButton
+          className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-2"
+        >
+          <Modal.Title style={{ color: "#818181" }}>
+            View Package Detail
+          </Modal.Title>
+        </Modal.Header>
+        <div className="col-lg-12 shadow   bg-white rounded ">
+          <form>
+            <Modal.Body>
+              <div style={{ alignContent: "center" }}>
+                <div className="pb-3">
+                  <h6>Package name </h6>
+                  <input className="form-control  w-100" value={item.name} />
+                </div>
+                
+                <div className="pb-3">
+                <h6>Package Duration</h6>
+                  <input className="form-control  w-100" value={item.duration} />
+                </div>
+                
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowView(false);
+                }}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </form>
+        </div>
+      </Modal>
+    );
+  };
+
+ 
+  const ModalDelete = ({ item }) => {
+    const DeleteRecordFromData = async (item) => {
+      console.log("item is ", item);
+
+      let { id } = item;
+      console.log("ID is ", id);
+
+      let arr = data;
+
+      arr = arr.filter((user) => user.id != id.toString());
+
+      console.log("arr length ", arr.length, arr, selectedID);
+      setSelectedID((state) => {
+        if (state == arr.length) return state - 1;
+        return state;
+      });
+      setData(arr);
+      setShowDelete(false);
+      // let res = await GET(ApiUrls.DELETE_INTEREST + item.id);
+      // setShowDelete(false);
+
+      // if (res.error === false) {
+      //   setMessage("Interest Deleted Successfully");
+      //   setShowSuccessAlert(true);
+      //   // setRefresh(!refresh);
+      //   setSelectedID(0);
+      // } else {
+      //   setMessage("Interest Not Deleted");
+      //   setShowErrorAlert(true);
+      // }
+      // console.log(res);
+      // setRefresh(!refresh);
+    };
+    return (
+      <Modal
+        show={showDelete}
+        onHide={() => {
+          setShowDelete(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title style={{ color: "#818181" }}>Delete Record</Modal.Title>
+        </Modal.Header>
+        <div>
+          <Modal.Body>Do you really want to delete this Record</Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setShowDelete(false);
+              }}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                DeleteRecordFromData(item);
+              }}
+            >
+              Delete
+            </Button>
+          </Modal.Footer>
+        </div>
+      </Modal>
+    );
+  };
   const Table = ({ item, index }) => {
     //  ;
     return (
       <tr>
         
-        <td >{index+1}</td>
-        <td >{item.title}</td>
+        <td key={item.id}>{item.id}</td>
+        <td key={item.id}>{item.name}</td>
+        <td key={item.id}>{item.duration}</td>
         <td>
           <div
             className="d-flex d-inline "
@@ -86,7 +421,7 @@ export default function PakageManagement() {
               type="button"
               className="bg-transparent  button-focus mr-2"
               onClick={() => {
-                // setShowView(true);
+                setShowView(true);
                 setSelectedID(index);
               }}
             >
@@ -95,8 +430,36 @@ export default function PakageManagement() {
             <ReactTooltip id="ViewTip" place="top" effect="solid">
               View Details
             </ReactTooltip>
-           
-           
+            <button
+              data-tip
+              data-for="EditTip"
+              type="button "
+              className="bg-transparent  button-focus mr-2"
+              onClick={() => {
+                setShowEdit(true);
+                setSelectedID(index);
+              }}
+            >
+              <FontAwesomeIcon style={{ fontSize: 15 }} icon={faPencilAlt} />
+            </button>
+            <ReactTooltip id="EditTip" place="top" effect="solid">
+              Edit Details
+            </ReactTooltip>
+            <button
+              data-tip
+              data-for="DeleteTip"
+              type="button"
+              className="bg-transparent  button-focus mr-2"
+              onClick={() => {
+                setShowDelete(true);
+                setSelectedID(index);
+              }}
+            >
+              <FontAwesomeIcon style={{ fontSize: 15 }} icon={faTrash} />
+            </button>
+            <ReactTooltip id="DeleteTip" place="top" effect="solid">
+              Delete Record
+            </ReactTooltip>
           </div>
         </td>
       </tr>
@@ -132,9 +495,7 @@ export default function PakageManagement() {
         <Col lg={10} sm={10} xs={10} xl={11}>
           <h3 style={{ color: "#818181" }}>Package Management</h3>
         </Col>
-
-      
-            <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
+        <Col lg={2} sm={2} xs={2} xl={1} id="floatSidebar">
               <div className="float-right drawer-div">
                 <SwipeableTemporaryDrawer />
               </div>
@@ -142,9 +503,26 @@ export default function PakageManagement() {
         </Row>
      
       
-        {/* <Row className=" shadow p-3  bg-white rounded ml-2 mr-1"> */}
-         
-          {/* <div className="table-responsive">
+        <Row className=" shadow p-3  bg-white rounded ml-2 mr-1">
+          <button
+            data-tip
+            data-for="AddTip"
+            type="button"
+            className="btn btn-primary "
+            style={{
+              backgroundColor: "#2258BF",
+            }}
+            onClick={() => {
+              setShowAdd(true);
+            }}
+          >
+            <FontAwesomeIcon icon={faPlusSquare} />{""} Add Package
+          </button>
+          <ReactTooltip id="AddTip" place="top" effect="solid">
+            Add new Package
+          </ReactTooltip>
+
+          <div className="table-responsive">
             <table className="table table-hover">
               <thead>
                 <tr>
@@ -152,8 +530,12 @@ export default function PakageManagement() {
                     ID
                   </th>
 
+
                   <th scope="col" style={{ color: "#818181" }}>
-                Title
+                Package_Name
+                  </th>
+                  <th scope="col" style={{ color: "#818181" }}>
+                    Duration
                   </th>
                   <th scope="col" style={{ color: "#818181" }}>
                     Actions
@@ -167,16 +549,22 @@ export default function PakageManagement() {
                   .map((item, index) => {
                     return <Table item={item} index={index} />;
                   })} */}
-                  {/* {data.map((item, index) => {
+                  {data.map((item, index) => {
                   return <Table index={index} item={item} />;
                 })}
               </tbody>
-              
+              {data.length > 0 ? (
+                <>
+                  <ModalDelete item={data[selectedID]} />
+                  <ModalEdit item={data[selectedID]} />
+                  <ModalView  item={data[selectedID]} />
+                </>
+              ) : null}
             </table>
-           
+            <ModalAdd />
           </div>
-         */} 
-      {/* </Row> */}
+        
+      </Row>
     </Container>
   );
 }

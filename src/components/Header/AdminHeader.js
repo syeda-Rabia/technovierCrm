@@ -90,8 +90,9 @@ const HeaderNavBar = (props) => {
             <img
               alt="Technovier"
               src={logo}
-              width="100px"
+              width="150px"
               height="50px"
+            style={{marginLeft:"50px"}}
               className="d-inline-block align-top"
             />{" "}
           </Link>
