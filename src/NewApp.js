@@ -165,10 +165,10 @@ const NewApp = (props) => {
           <HeaderNavBar />
           <AdminLeadsScreen />
         </Route> */}
-        <Route path="/admin/todolist">
+        {/* <Route path="/admin/todolist">
           <AdminHeader />
           <AdminTodoListScreen />
-        </Route>
+        </Route> */}
         <Route path="/admin/user">
           <AdminHeader />
           <AdminAddUserScreen/>

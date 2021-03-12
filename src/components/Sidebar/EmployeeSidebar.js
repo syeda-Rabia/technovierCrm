@@ -57,13 +57,13 @@ export default function NestedList() {
       component="nav"
       aria-labelledby="nested-list-subheader"
       // subheader={
-      //   <ListSubheader component="div" id="nested-list-subheader">
+      //   <ListSubheader id="nested-list-subheader">
       //    Employee Sidebar
       //   </ListSubheader>
       // }
       className={classes.root}
     >
-      <ListItem  button>
+      <ListItem  >
         
         <ListItemLink href="/">
         <ListItemIcon>
@@ -72,7 +72,7 @@ export default function NestedList() {
         <ListItemText primary="DashBoard"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button onClick={handleClick}>
+      <ListItem  onClick={handleClick}>
       <ListItemLink href="#">
         <ListItemIcon>
           <ViewListIcon />
@@ -82,8 +82,8 @@ export default function NestedList() {
         </ListItemLink>{open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List style={{paddingLeft:"18px"}}component="div" >
-          <ListItem button className={classes.nested}>
+        <List style={{paddingLeft:"18px"}}>
+          <ListItem  className={classes.nested}>
            
             <ListItemLink href="/employee/leads">
            <ListItemIcon>
@@ -92,7 +92,7 @@ export default function NestedList() {
             <ListItemText primary="Leads Lists" />
             </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
+          <ListItem  className={classes.nested}>
           <ListItemLink href="/employee/Integrate-leads">
             <ListItemIcon>
               <StarBorder />
@@ -104,7 +104,7 @@ export default function NestedList() {
         </List>
       </Collapse>
       
-      <ListItem button>
+      <ListItem >
 
       <ListItemLink href="/employee/todolist">
         <ListItemIcon>
@@ -113,7 +113,7 @@ export default function NestedList() {
         <ListItemText primary="To Do List"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button onClick={handleClick2}>
+      <ListItem  onClick={handleClick2}>
       
       <ListItemLink href="#">
         <ListItemIcon>
@@ -125,8 +125,8 @@ export default function NestedList() {
         </ListItemLink> {inventoryList ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={inventoryList} timeout="auto" unmountOnExit>
-        <List style={{paddingLeft:"18px"}} component="div" >
-        <ListItem button className={classes.nested}>
+        <List style={{paddingLeft:"18px"}} >
+        <ListItem  className={classes.nested}>
            
              <ListItemLink href="/employee/inventory">
              <ListItemIcon>
@@ -139,7 +139,7 @@ export default function NestedList() {
         
         </List>
       </Collapse> 
-      <ListItem button>
+      <ListItem >
        
        <ListItemLink href="/employee/notification">
        <ListItemIcon>
@@ -152,7 +152,7 @@ export default function NestedList() {
        
        </ListItemLink>
      </ListItem>
-      <ListItem button>
+      <ListItem >
         
         <ListItemLink href="/employee/policies">
         <ListItemIcon>
@@ -161,7 +161,7 @@ export default function NestedList() {
         <ListItemText primary="Policies"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem >
      
         <ListItemLink href="/employee/documentation">
         <ListItemIcon>
@@ -170,7 +170,7 @@ export default function NestedList() {
         <ListItemText primary="Documentation"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem >
        
         <ListItemLink href="/employee/setting">
         <ListItemIcon>
@@ -179,7 +179,7 @@ export default function NestedList() {
         <ListItemText primary="Settings"/>
         </ListItemLink>
       </ListItem>
-      {/* <ListItem button onClick={handleClick}>
+      {/* <ListItem  onClick={handleClick}>
         <ListItemIcon>
           <InboxIcon />
         </ListItemIcon>
@@ -187,7 +187,7 @@ export default function NestedList() {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
+        <List disablePadding>
           <ListItem button className={classes.nested}>
             <ListItemIcon>
               <StarBorder />

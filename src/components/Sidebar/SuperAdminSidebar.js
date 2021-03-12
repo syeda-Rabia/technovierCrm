@@ -64,7 +64,7 @@ export default function NestedList() {
       // }
       className={classes.root}
     >
-      <ListItem  button>
+      <ListItem>
         
         <ListItemLink href="/">
         <ListItemIcon>
@@ -74,7 +74,7 @@ export default function NestedList() {
         </ListItemLink>
       </ListItem>
      
-       <ListItem button>
+       <ListItem >
         
         <ListItemLink href="/superadmin/client">
         <ListItemIcon>
@@ -83,7 +83,7 @@ export default function NestedList() {
         <ListItemText primary="Clients"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem>
 
       <ListItemLink href="/superadmin/package-management">
         <ListItemIcon>
@@ -92,7 +92,7 @@ export default function NestedList() {
         <ListItemText primary="Package Management"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem>
        
        <ListItemLink href="/superadmin/fianance-management">
        <ListItemIcon>
@@ -101,7 +101,7 @@ export default function NestedList() {
        <ListItemText primary="Fianance Management"/>
        </ListItemLink>
      </ListItem>
-      <ListItem button>
+      <ListItem>
        
        <ListItemLink href="/superadmin/notification">
        <ListItemIcon>
@@ -113,7 +113,7 @@ export default function NestedList() {
        </ListItemLink>
      </ListItem>
      
-      <ListItem button>
+      <ListItem>
      
         <ListItemLink href="/superadmin/documentation">
         <ListItemIcon>
@@ -122,7 +122,7 @@ export default function NestedList() {
         <ListItemText primary="Documentation"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem>
        
         <ListItemLink href="/superadmin/setting">
         <ListItemIcon>

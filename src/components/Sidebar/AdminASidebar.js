@@ -63,7 +63,7 @@ export default function NestedList() {
       // }
       className={classes.root}
     >
-      <ListItem  button>
+      <ListItem>
         
         <ListItemLink href="/">
         <ListItemIcon>
@@ -72,7 +72,7 @@ export default function NestedList() {
         <ListItemText primary="DashBoard"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button onClick={handleClick}>
+      <ListItem  onClick={handleClick}>
       <ListItemLink href="#">
         <ListItemIcon>
           <ViewListIcon />
@@ -82,8 +82,8 @@ export default function NestedList() {
         </ListItemLink>{open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List style={{paddingLeft:"18px"}}component="div" >
-          <ListItem button className={classes.nested}>
+        <List style={{paddingLeft:"18px"}}>
+          <ListItem  className={classes.nested}>
            
             <ListItemLink href="/admin/leads">
            <ListItemIcon>
@@ -92,7 +92,7 @@ export default function NestedList() {
             <ListItemText primary="Leads Lists" />
             </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
+          <ListItem  className={classes.nested}>
           <ListItemLink href="/admin/integrated-leads">
             <ListItemIcon>
               <StarBorder />
@@ -100,7 +100,7 @@ export default function NestedList() {
             <ListItemText primary="Integrated leads" />
             </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
+          <ListItem className={classes.nested}>
           <ListItemLink href="/admin/closedleads">
             <ListItemIcon>
               <StarBorder />
@@ -110,7 +110,7 @@ export default function NestedList() {
           </ListItem>
         </List>
       </Collapse>
-      <ListItem button>
+      <ListItem >
        
           <ListItemLink href="/admin/leadsallocation">
           <ListItemIcon>
@@ -119,7 +119,7 @@ export default function NestedList() {
         <ListItemText primary="Leads Allocation"/>
           </ListItemLink>
       </ListItem>
-      <ListItem button>
+      {/* <ListItem >
 
       <ListItemLink href="/admin/todolist">
         <ListItemIcon>
@@ -127,8 +127,8 @@ export default function NestedList() {
         </ListItemIcon>
         <ListItemText primary="To Do List"/>
         </ListItemLink>
-      </ListItem>
-      <ListItem button onClick={handleClick2}>
+      </ListItem> */}
+      <ListItem  onClick={handleClick2}>
       
       <ListItemLink href="#">
         <ListItemIcon>
@@ -140,8 +140,8 @@ export default function NestedList() {
         </ListItemLink> {inventoryList ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={inventoryList} timeout="auto" unmountOnExit>
-        <List style={{paddingLeft:"18px"}} component="div" >
-        <ListItem button className={classes.nested}>
+        <List style={{paddingLeft:"18px"}}  >
+        <ListItem  className={classes.nested}>
            
              <ListItemLink href="/admin/inventory">
              <ListItemIcon>
@@ -150,7 +150,7 @@ export default function NestedList() {
             <ListItemText primary="Inventory List"/>
              </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
+          <ListItem  className={classes.nested}>
            
             <ListItemLink href="/admin/viewable">
  <ListItemIcon>
@@ -159,7 +159,7 @@ export default function NestedList() {
             <ListItemText primary="Viewable" />
             </ListItemLink>
           </ListItem>
-          <ListItem button className={classes.nested}>
+          <ListItem  className={classes.nested}>
             
              <ListItemLink href="/admin/employee-request">
              <ListItemIcon>
@@ -170,7 +170,7 @@ export default function NestedList() {
           </ListItem> 
         </List>
       </Collapse> 
-      <ListItem button>
+      <ListItem>
        
         <ListItemLink href="/admin/user">
         <ListItemIcon>
@@ -179,7 +179,7 @@ export default function NestedList() {
         <ListItemText primary="Users"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem >
        
        <ListItemLink href="/admin/notifications">
        <ListItemIcon>
@@ -190,7 +190,7 @@ export default function NestedList() {
        <ListItemText primary="Notification"/>
        </ListItemLink>
      </ListItem>
-      <ListItem button>
+      <ListItem >
         
         <ListItemLink href="/admin/policies">
         <ListItemIcon>
@@ -199,7 +199,7 @@ export default function NestedList() {
         <ListItemText primary="Policies"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem >
      
         <ListItemLink href="/admin/documentation">
         <ListItemIcon>
@@ -208,7 +208,7 @@ export default function NestedList() {
         <ListItemText primary="Documentation"/>
         </ListItemLink>
       </ListItem>
-      <ListItem button>
+      <ListItem >
        
         <ListItemLink href="/admin/settings">
         <ListItemIcon>

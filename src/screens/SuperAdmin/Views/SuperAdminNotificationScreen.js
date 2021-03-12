@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import PakageManagement from "../Pakage Management/PakageManagement";
+import SuperAdminNotification from "../Notification/SuperadminNotification";
 import SuperAdminSidebar from "../../../components/Sidebar/SuperAdminSidebar";
 import "./SuperAdminScreenStyle.css";
 export default function SuperAdminPakageManagementScreen() {
@@ -28,7 +28,7 @@ export default function SuperAdminPakageManagementScreen() {
           >
             
 
-            <PakageManagement/>
+            <SuperAdminNotification/>
           </Col>
         </Row>
       </Container>

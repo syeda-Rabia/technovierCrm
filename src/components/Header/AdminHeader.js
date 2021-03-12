@@ -90,7 +90,7 @@ const HeaderNavBar = (props) => {
             <img
               alt="Technovier"
               src={logo}
-              width="150px"
+              width="100px"
               height="50px"
             style={{marginLeft:"50px"}}
               className="d-inline-block align-top"

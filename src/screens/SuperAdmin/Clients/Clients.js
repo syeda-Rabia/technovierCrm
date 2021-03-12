@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function AddPolicies() {
+export default function AddClient() {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -226,15 +226,15 @@ export default function AddPolicies() {
                   }}
                   className="form-control form-control-sm w-100"
                 >
-                  <option value={"pk1"}>Package 1</option>
-                  <option value={"pk2"}>package 2</option>
+                  <option value={"Package 1"}>Package 1</option>
+                  <option value={"Package 2"}>package 2</option>
                 </select>
               </div>
               <div className="pb-3">
                 <h6>Website</h6>
                 <Input
                   className="form-control  w-100 "
-                  placeholder="Enter First Name"
+                  placeholder="Enter website url"
                   required="true"
                   type="text"
                   minLength="3"
@@ -255,8 +255,8 @@ export default function AddPolicies() {
                   }}
                   className="form-control form-control-sm w-100"
                 >
-                  <option value={"pk1"}>Active</option>
-                  <option value={"pk2"}>De-active</option>
+                  <option value={"Active"}>Active</option>
+                  <option value={"De-Active"}>De-Active</option>
                 </select>
               </div>
             
@@ -330,7 +330,7 @@ export default function AddPolicies() {
         if (val.id == postData.id) val =postData;
         return val;
       });
-      arr.push(postData);
+      // arr.push(postData);
       setData(arr);
       // setShowAdd(false);
       setRefresh(!refresh);
@@ -435,8 +435,8 @@ export default function AddPolicies() {
                   }}
                   className="form-control form-control-sm w-100"
                 >
-                  <option value={"pk1"}>Package 1</option>
-                  <option value={"pk2"}>package 2</option>
+                  <option value={"package 1"}>Package 1</option>
+                  <option value={"package 2"}>package 2</option>
                 </select>
               </div>
               <div className="pb-3">

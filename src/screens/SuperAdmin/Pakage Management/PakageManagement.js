@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function AddPolicies() {
+export default function Management() {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -203,7 +203,7 @@ export default function AddPolicies() {
         if (val.id == packagedata.id) val =packagedata;
         return val;
       });
-      arr.push(packagedata);
+      // arr.push(packagedata);
       setData(arr);
       // setShowAdd(false);
       setRefresh(!refresh);
