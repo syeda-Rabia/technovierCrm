@@ -2,7 +2,7 @@ import "./../../SuperAdmin/DashBoard/SuperAdminDashboard.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt,faEye } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash,faObjectGroup ,faUsers} from "@fortawesome/free-solid-svg-icons";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { Modal } from "react-bootstrap";
@@ -20,13 +20,15 @@ import Pagination from "../../../components/Pagination/Pagination";
 import {
   Tooltip,
   IconButton,
+  Chip,
 } from "@material-ui/core";
+import FaceIcon from "@material-ui/icons/Face";
 import {  useHistory, Redirect, Route } from "react-router-dom";
 import { makeStyles, Backdrop, CircularProgress } from "@material-ui/core";
 import SuccessNotification from "../../../components/SuccessNotification";
 import ErrorNotification from "../../../components/ErrorNotification";
 import PreLoading from "../../../components/PreLoading";
-
+import GroupIcon from '@material-ui/icons/Group';
 import TextArea from "antd/lib/input/TextArea";
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -46,6 +48,7 @@ export default function Management() {
   const [showEdit, setShowEdit] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [showView, setShowView]= useState(false);
+  const [showClient, setShowClient]= useState(false);
   const [data, setData] = useState(packageManagement );
   // const [data, setData] = useState([]);
   const [selectedID, setSelectedID] = useState(0);
@@ -73,6 +76,8 @@ export default function Management() {
     // const [interest, SetInterest] = useState("");
     const [package_name, SetPackageName]=useState("");
     const [duration, SetDuration]=useState("");
+    const [description, SetDescription]=useState("");
+    const [amount, SetAmount]=useState("");
 
     const addData = async (event) => {
       event.preventDefault();
@@ -80,6 +85,8 @@ export default function Management() {
         id: "1",
        name: package_name,
         duration: duration, 
+        description:description,
+        amount:amount,
       
       };
 
@@ -136,6 +143,7 @@ export default function Management() {
                   }}
                 />
               </div>
+             
               <div>
               <h6>Package Duration</h6>
               <input
@@ -147,6 +155,34 @@ export default function Management() {
                   value={duration}
                   onChange={(e) => {
                     SetDuration(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="pb-3">
+                <h6>Amount</h6>
+                <input
+                  className="form-control  w-100 "
+                  placeholder="Enter package amount"
+                  type="number"
+                  minLength="3"
+                  maxLength="30"
+                  value={amount}
+                  onChange={(e) => {
+                    SetAmount(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="pb-3">
+                <h6>Description</h6>
+                <TextArea
+                  className="form-control  w-100 "
+                  placeholder="Enter Description"
+                  type="number"
+                  minLength="3"
+                  maxLength="200"
+                  value={description}
+                  onChange={(e) => {
+                    SetDescription(e.target.value);
                   }}
                 />
               </div>
@@ -179,6 +215,8 @@ export default function Management() {
     // const [interest, SetInterest] = useState(item.interest);
     const [package_name, SetPackageName]=useState(item.name);
     const [duration, SetDuration]=useState(item.duration);
+    const [description, SetDescription]=useState(item.description);
+    const [amount, SetAmount]=useState(item.amount);
     const EditRecordToServer = async (event) => {
       event.preventDefault();
 
@@ -188,7 +226,9 @@ export default function Management() {
       let packagedata = {
         id: item.id,
         name: package_name,
-        duration: duration
+        duration: duration,
+        description:description,
+        amount:amount,
       };
       // let res = await POST(ApiUrls.EDIT_INTEREST, user);
       // if (res.error === false) {
@@ -256,6 +296,34 @@ export default function Management() {
                     }}
                   />
                 </div>
+                <div className="pb-3">
+                <h6>Amount</h6>
+                <input
+                  className="form-control  w-100 "
+                  placeholder="Enter package amount"
+                  type="number"
+                  minLength="3"
+                  maxLength="30"
+                  value={amount}
+                  onChange={(e) => {
+                    SetAmount(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="pb-3">
+                <h6>Description</h6>
+                <TextArea
+                  className="form-control  w-100 "
+                  placeholder="Enter Description"
+                  type="number"
+                  minLength="3"
+                  maxLength="200"
+                  value={description}
+                  onChange={(e) => {
+                    SetDescription(e.target.value);
+                  }}
+                />
+              </div>
               </form>
             </Modal.Body>
             <Modal.Footer>
@@ -313,7 +381,14 @@ export default function Management() {
                 <h6>Package Duration</h6>
                   <input className="form-control  w-100" value={item.duration} />
                 </div>
-                
+                <div className="pb-3">
+                <h6>Package Amount</h6>
+                  <input className="form-control  w-100" value={item.amount} />
+                </div>
+                <div className="pb-3">
+                <h6>Package Amount</h6>
+                  <TextArea className="form-control  w-100" value={item.description} />
+                </div>
               </div>
             </Modal.Body>
             <Modal.Footer>
@@ -332,7 +407,64 @@ export default function Management() {
     );
   };
 
- 
+  const ModalClient = ({ item }) => {
+    return (
+      <Modal
+        show={showClient}
+        onHide={() => {
+          setShowClient(false);
+        }}
+      >
+        <Modal.Header
+          closeButton
+          className="col-lg-12 shadow p-3 mb-3 bg-white rounded mt-2"
+        >
+          <Modal.Title style={{ color: "#818181" }}>
+            View clients
+          </Modal.Title>
+        </Modal.Header>
+        <div className="col-lg-12 shadow   bg-white rounded ">
+          <form>
+            <Modal.Body>
+              <div style={{ alignContent: "center" }}>
+                <div className="pb-3">
+                  <h6>Clients </h6>
+                  {item.client?.length > 0 
+                        ? item.client.map((item) => (
+                           
+            <Chip
+              icon={<FaceIcon />}
+              variant="outlined"
+              label={item}
+              style={{ marginRight: "5px" }}
+            />
+          )) : (
+            "-------"
+          )}
+                </div>
+                
+                {/* <div className="pb-3">
+                <h6>Package Duration</h6>
+                  <input className="form-control  w-100" value={item.duration} />
+                </div> */}
+                
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                style={{ backgroundColor: "#2258BF" }}
+                onClick={() => {
+                  setShowClient(false);
+                }}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </form>
+        </div>
+      </Modal>
+    );
+  };
   const ModalDelete = ({ item }) => {
     const DeleteRecordFromData = async (item) => {
       console.log("item is ", item);
@@ -407,7 +539,34 @@ export default function Management() {
         
         <td key={item.id}>{item.id}</td>
         <td key={item.id}>{item.name}</td>
+      
         <td key={item.id}>{item.duration}</td>
+        <td key={item.id}>{item.amount}</td>
+        <td key={item.id}>{item.description}</td>
+        <td>  <div
+            className="d-flex d-inline "
+            style={{
+              justifyContent: "center",
+            }}
+          >
+                <button
+              data-tip
+              data-for="Viewclient"
+              type="button"
+              className="bg-transparent  button-focus mr-2"
+              onClick={() => {
+                setShowClient(true);
+                setSelectedID(index);
+              }}
+            >
+              <FontAwesomeIcon style={{ fontSize: 15 }} icon={faUsers} />
+            </button> 
+            <ReactTooltip id="Viewclient" place="top" effect="solid">
+              View Clients
+            </ReactTooltip>
+            
+          </div>
+        </td>
         <td>
           <div
             className="d-flex d-inline "
@@ -531,11 +690,21 @@ export default function Management() {
                   </th>
 
 
-                  <th scope="col" style={{ color: "#818181" }}>
-                Package_Name
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                Package Name
                   </th>
+                 
                   <th scope="col" style={{ color: "#818181" }}>
                     Duration
+                  </th>
+                  <th scope="col" style={{ color: "#818181" }}>
+                    Amount
+                  </th>
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                 Description
+                  </th>
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                 Package Clients
                   </th>
                   <th scope="col" style={{ color: "#818181" }}>
                     Actions
@@ -558,6 +727,7 @@ export default function Management() {
                   <ModalDelete item={data[selectedID]} />
                   <ModalEdit item={data[selectedID]} />
                   <ModalView  item={data[selectedID]} />
+                  <ModalClient item={data[selectedID]}/>    
                 </>
               ) : null}
             </table>

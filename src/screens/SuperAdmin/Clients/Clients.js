@@ -26,6 +26,7 @@ import {
   Tooltip,
   IconButton,
   InputAdornment,
+  Chip,
 } from "@material-ui/core";
 import {  useHistory, Redirect, Route } from "react-router-dom";
 import { makeStyles, Backdrop, CircularProgress } from "@material-ui/core";
@@ -44,6 +45,41 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
     },
   },
+ 
+    chipGracePeriod: {
+      color: "#fff",
+      backgroundColor: "red !important",
+    },
+    chipComplete: {
+      color: "#fff",
+      backgroundColor: "green !important",
+    },
+    chipFollowUp: {
+      color: "#fff",
+      backgroundColor: "yellow !important",
+    },
+    chipOverdue: {
+      color: "#fff",
+      backgroundColor: "orange !important",
+    },
+    chipAllocated: {
+      color: "#fff",
+      backgroundColor: "#90caf9 !important",
+    },
+    chipLabelColor: {
+      color: "white",
+      fontWeight:"40px !important",
+      fontSize:"14px !important",
+    },
+    chipActive:{
+      color: "white",
+      backgroundColor: "#008000 !important",
+    },
+    chipDeActive:{
+      color: "white",
+      backgroundColor: "#FF5151 !important",
+    },
+ 
 }));
 export default function AddClient() {
   const classes = useStyles();
@@ -637,8 +673,26 @@ export default function AddClient() {
         <td key={item.id}>{item.name}</td>
         <td key={item.id}>{item.email}</td>
         <td key={item.id}>{item.package_type}</td>
-        <td key={item.id}>{item.website}</td>
-        <td key={item.id}>{item.status}</td>
+        {/* <td key={item.id}>{item.website}</td> */}
+        <td key={item.id}>
+        {item.status != "" ? (
+            <Chip
+              classes={{
+                label: classes.chipLabelColor,
+                root:
+                  item.status === "Active"
+                    ? classes.chipActive
+                    : item.status === "De-Active"
+                    ? classes.chipDeActive
+                    
+                    : null,
+              }}
+              label={item.status}
+            />
+          ) : (
+            "-------"
+          )}
+        </td>
         <td>
           <div
             className="d-flex d-inline "
@@ -747,7 +801,7 @@ export default function AddClient() {
               setShowAdd(true);
             }}
           >
-            <FontAwesomeIcon icon={faPlusSquare} />{""} Add Client
+            <FontAwesomeIcon icon={faPlusSquare} />{""}{""}{""} Add Client
           </button>
           <ReactTooltip id="AddTip" place="top" effect="solid">
             Add new Client
@@ -760,18 +814,18 @@ export default function AddClient() {
                   <th scope="col" style={{ color: "#818181" }}>
                     ID
                   </th>
-                  <th scope="col" style={{ color: "#818181" }}>
-                Client_Name
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                Client Name
                   </th>
                   <th scope="col" style={{ color: "#818181" }}>
                     Email
                   </th>
-                  <th scope="col" style={{ color: "#818181" }}>
-                    Package_Type
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                    Package Type
                   </th>
-                  <th scope="col" style={{ color: "#818181" }}>
+                  {/* <th scope="col" style={{ color: "#818181" }}>
                     Website
-                  </th>
+                  </th> */}
                   
                   <th scope="col" style={{ color: "#818181" }}>
                    Status

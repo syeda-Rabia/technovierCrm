@@ -82,6 +82,14 @@ const useStyles = makeStyles((theme) => ({
   chipLabelColor: {
     color: "black",
   },
+  chipActive:{
+    color: "#fff",
+    backgroundColor: "green !important",
+  },
+  chipDeActive:{
+    color: "#fff",
+    backgroundColor: "red !important",
+  },
 }));
 
 export default function LeadsAdmin(props) {
@@ -1664,10 +1672,10 @@ const setFilterdata = async () => {
                         Interest
                       </span>
                     </th> */}
-                <th scope="col">
-                  <span id="sn" style={{ color: "#818181" }}>
+                <th scope="col" class="text-nowrap">
+                  <span id="sn" style={{ color: "#818181"}}>
                     {" "}
-                    Allocated_To
+                    Allocated To
                   </span>
                 </th> 
 
@@ -1681,9 +1689,9 @@ const setFilterdata = async () => {
                     Deadline
                   </span>
                 </th>
-                <th scope="col">
+                <th scope="col" class="text-nowrap">
                   <span id="sn" style={{ color: "#818181" }}>
-                    Show_Employee_action
+                    Show Employee Action
                   </span>
                 </th>
 
@@ -1693,9 +1701,9 @@ const setFilterdata = async () => {
                   </span>
                 </th>
 
-                <th scope="col">
+                <th scope="col" class="text-nowrap">
                   <span id="sn" style={{ color: "#818181" }}>
-                    Call_To_Action
+                    Call To Action
                   </span>
                 </th>
 

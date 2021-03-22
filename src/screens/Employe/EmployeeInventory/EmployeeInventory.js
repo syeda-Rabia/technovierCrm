@@ -217,9 +217,9 @@ function EmployeeInventory(props) {
                     ID
                       </span>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-nowrap" >
                     <span id="spn" style={{ color: "#818181" }}>
-                      Sr_No
+                      Sr No
                       </span>
                     </th>
                     <th scope="col">
@@ -232,9 +232,9 @@ function EmployeeInventory(props) {
                     Category
                       </span>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-nowrap" >
                     <span id="spn" style={{ color: "#818181" }}>
-                    Inventory_Name
+                    Inventory Name
                       </span>
                     </th>
                     <th scope="col">

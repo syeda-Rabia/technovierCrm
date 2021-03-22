@@ -1014,9 +1014,9 @@ function EmployeeLeads(props, lead_id) {
                       Interest
                     </span>
                   </th>
-                  <th scope="col">
+                  <th scope="col" class="text-nowrap" >
                     <span id="st" style={{ color: "#818181" }}>
-                      Allocate_To
+                      Allocate To
                     </span>
                   </th>
                   <th scope="col">
@@ -1034,14 +1034,14 @@ function EmployeeLeads(props, lead_id) {
                       Deadline
                     </span>
                   </th>
-                  <th scope="col">
+                  <th scope="col" class="text-nowrap" > 
                     <span id="st" style={{ color: "#818181" }}>
-                      Admin_Action
+                      Admin Action
                     </span>
                   </th>
-                  <th scope="col">
+                  <th scope="col" class="text-nowrap" >
                     <span id="st" style={{ color: "#818181" }}>
-                      Add_Recording
+                      Add Recording
                     </span>
                   </th>
                   <th scope="col">

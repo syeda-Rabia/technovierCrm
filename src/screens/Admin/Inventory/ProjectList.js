@@ -482,18 +482,18 @@ export default function ProjectList() {
                   <th scope="col" style={{ color: "#818181" }}>
                     ID
                   </th>
-                  <th scope="col" style={{ color: "#818181" }}>
-                    Project_Name
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                    Project Name
                   </th>
 
-                  <th scope="col" style={{ color: "#818181" }}>
-                    Project_Category
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                    Project Category
                   </th>
                   <th scope="col" style={{ color: "#818181" }}>
                     Units
                   </th>
-                  <th scope="col" style={{ color: "#818181" }}>
-                    Add_More_Units
+                  <th scope="col" class="text-nowrap" style={{ color: "#818181" }}>
+                    Add More Units
                   </th>
 
                   <th scope="col" style={{ color: "#818181" }}>

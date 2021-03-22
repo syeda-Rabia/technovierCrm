@@ -651,10 +651,10 @@ export default function LeadsAdmin() {
                         Interest
                       </span>
                     </th> */}
-                <th scope="col">
+                <th scope="col" class="text-nowrap">
                   <span id="sn" style={{ color: "#818181" }}>
                     {" "}
-                    Allocated_To
+                    Allocated To
                   </span>
                 </th>
 

@@ -443,14 +443,14 @@ export default function InventoryAdmin(props) {
                         ID
                       </span>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-nowrap">
                       <span id="sn" style={{ color: "#818181" }}>
-                        Serial_No
+                        Serial No
                       </span>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-nowrap">
                       <span id="sn" style={{ color: "#818181" }}>
-                        ProjectName
+                        Project Name
                       </span>
                     </th>
                     <th scope="col">
@@ -458,14 +458,14 @@ export default function InventoryAdmin(props) {
                         Category
                       </span>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-nowrap">
                       <span id="sn" style={{ color: "#818181" }}>
-                        InventoryName
+                        Inventory Name
                       </span>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-nowrap">
                       <span id="sn" style={{ color: "#818181" }}>
-                        BlockName
+                        Block Name
                       </span>
                     </th>
 
